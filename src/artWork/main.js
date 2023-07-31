@@ -50,7 +50,6 @@ export default class ArtGL {
     //ページ遷移
     this.shape3D.onTransition(path);
     this.shapeInstance = [];
-    if (path === "index") this.createIndexShape();
   }
 
   resize() {

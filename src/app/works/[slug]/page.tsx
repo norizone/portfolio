@@ -13,6 +13,24 @@ type Props = {
   params: { slug: string }
 }
 
+const getWork= async(slug:string) =>{
+  const uri = process.env.API_URL;
+  const secretKey = process.env.API_KEY;
+  const url = new URL(uri+'')
+  url.searchParams.set("ids", slug);
+  url.searchParams.set("offset", '0');
+  url.searchParams.set("limit", '1');
+  const response = await fetch(
+    url.href,
+    {headers: { "X-MICROCMS-API-KEY": secretKey+'' }}
+    );
+  const data:Works = await response.json();
+  if (data.contents.length < 1 ) {
+    notFound();
+  }
+  return data
+}
+
 export const generateMetadata = async(
   { params }: Props,
 ): Promise<Metadata>  => {
@@ -36,25 +54,7 @@ export const generateMetadata = async(
   }
 }
 
-export const getWork= async(slug:string) =>{
-  const uri = process.env.API_URL;
-  const secretKey = process.env.API_KEY;
-  const url = new URL(uri+'')
-  url.searchParams.set("ids", slug);
-  url.searchParams.set("offset", '0');
-  url.searchParams.set("limit", '1');
-  const response = await fetch(
-    url.href,
-    {headers: { "X-MICROCMS-API-KEY": secretKey+'' }}
-    );
-  const data:Works = await response.json();
-  if (data.contents.length < 1 ) {
-    notFound();
-  }
-  return data
-}
-
-const Works = async({ params }: { params: { slug: string } }) => {
+const WorksPage = async({ params }: { params: { slug: string } }) => {
   const data:Works = await getWork(params.slug);
   return (
     <MotionWrap>
@@ -70,4 +70,4 @@ const Works = async({ params }: { params: { slug: string } }) => {
   );
 };
 
-export default Works;
+export default WorksPage;

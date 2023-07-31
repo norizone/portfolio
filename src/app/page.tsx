@@ -19,7 +19,7 @@ export const metadata: Metadata = {
   },
 }
 
-export const getWorks= async() =>{
+ const getWorks= async() =>{
   const uri = process.env.API_URL;
   const secretKey = process.env.API_KEY;
   const url = new URL(uri+'');

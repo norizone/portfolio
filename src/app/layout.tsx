@@ -1,7 +1,6 @@
 import type { Metadata } from "next";
 import { Montserrat } from "next/font/google";
 
-// import NextAuthProvider from '@/provider/NextAuth';
 import '@/styles/global.scss'
 import { PrimaryHeader } from "@/components/layouts/header/PrimaryHeader";
 import { ScrollDown } from "@/components/layouts/decoration/ScrollDown";
@@ -15,7 +14,6 @@ const montserrat = Montserrat({
   variable: "--font-montserrat",
   display: "swap",
 });
-
 
 export const metadata: Metadata = {
   title: {
@@ -43,12 +41,10 @@ export default function RootLayout({
       <body>
         <PrimaryHeader/>
         <ScrollDown/>
-        {/* <NextAuthProvider> */}
         <AppProvider>
           <ArtWork/>
           {children}
           </AppProvider>
-        {/* </NextAuthProvider> */}
         <SideLinks/>
         </body>
     </html>

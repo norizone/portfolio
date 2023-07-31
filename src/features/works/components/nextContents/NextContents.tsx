@@ -32,8 +32,7 @@ export const NextContents: FC<Props> = (props) => {
     {data!==undefined &&
     <div className={styles.pageNext}>
       <p className={clsx("upper", styles.pageNext__titles)}>
-        <span className={styles.pageNext__title} 
-        dangerouslySetInnerHTML={{ __html: contents.title_en}}></span>
+        <span className={styles.pageNext__title} >NEXT WORK</span>
         <span className={styles.pageNext__line}></span>
       </p>
       <Link className={styles.pageNext__link} href={`/works/${contents.id}`}>
