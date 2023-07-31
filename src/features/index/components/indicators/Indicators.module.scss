@@ -1,0 +1,67 @@
+@use '_functions.scss' as f;
+
+.indicators {
+  position: fixed;
+  z-index: 10;
+  right: f.vw(375, 12);
+  height: 100vh;
+  top: 0;
+  width: max-content;
+  &__inner {
+    --indicator-position: 0%;
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    right: 0;
+  }
+  &__clip {
+    display: flex;
+    flex-flow: column nowrap;
+    justify-content: center;
+    padding: 20px 0;
+    clip-path: polygon(
+      50% 0,
+      100% 0%,
+      100% 100%,
+      50% 100%,
+      0% var(--indicator-position)
+    );
+    @include f.media("lg") {
+      padding: 0;
+    }
+  }
+  &__text {
+    display: none;
+    @include f.media("lg") {
+      display: block;
+      font-family: var(--font-en);
+      font-weight: var(--font-regular);
+      letter-spacing: f.ls(40);
+      height: max-content;
+      width: max-content;
+      position: absolute;
+      text-align: right;
+      display: flex;
+      align-items: center;
+      font-size: f.rem(12);
+      top: calc(var(--indicator-position) - 0.5em);
+      right: f.rem(28);
+    }
+  }
+}
+.indicator {
+  width: f.vw(375, 16);
+  background: var(--color-gray);
+  height: 1px;
+  transition: background 0.1s ease-in;
+  @include f.media("s") {
+    width: f.rem(16);
+  }
+  & ~ & {
+    margin-top: 20px;
+  }
+  &.active {
+    background: var(--color-white);
+    height: 2px;
+  }
+}

@@ -1,0 +1,18 @@
+@use '_functions.scss' as f;
+
+.headline {
+  font-size: f.vw(375, 40);
+  font-family: var(--font-en);
+  font-weight: var(--font-bold);
+  letter-spacing: f.ls(20);
+  position: relative;
+  z-index: 1;
+  line-height: f.lh(100, 90);
+  text-transform: uppercase;
+  @include f.media("lg") {
+    font-size: f.vw(1366, 100);
+  }
+  @include f.media("xl") {
+    font-size: f.rem(100);
+  }
+}
