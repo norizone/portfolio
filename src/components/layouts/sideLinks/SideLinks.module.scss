@@ -1,0 +1,31 @@
+@use '_functions.scss' as f;
+
+.contact {
+  position: fixed;
+  bottom: 32px;
+  right: 3vw;
+  font-family: var(--font-en);
+  letter-spacing: f.ls(40);
+  font-weight: var(--font-regular);
+  display: flex;
+  flex-flow: column nowrap;
+  align-items: center;
+  @include f.media("lg") {
+    right: f.vw(1366, 62);
+    bottom: 82px;
+  }
+  @include f.media("xl") {
+    right: f.rem(62);
+  }
+}
+.icon{
+  width: 18px;
+  display: block;
+  margin-top: 10px;
+  & svg{
+    width: 100%;
+    height: auto;
+    display: block;
+  }
+}
+
