@@ -20,16 +20,16 @@ export const ArtWork = () => {
 
   useEffect(() => {
     if (!GL) return;
-    GL.deformation(path);
     if (path !== "index") {
       loadedImage.length !== 0 && setLoadedImage([]);
       loadedShapeCount = [];
     }
+    GL.deformation(path);
   }, [GL, path]);
 
   useEffect(() => {
     if (!GL || path !== "index" || loadedImage.length === 0) return;
-    handlerShapes(loadedImage);
+      handlerShapes(loadedImage);
   }, [loadedImage]);
 
   const handlerShapes = (addLoadedCounts: Array<number>) => {

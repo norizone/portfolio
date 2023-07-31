@@ -49,7 +49,9 @@ export const MainContents:FC<Props> = (props) =>{
       if (el.isIntersecting) {
         setActiveWork(contentsIndex)
         if(contents.id === 'dummy')return;
-        setLoadedImage();
+        setTimeout(() => {
+          setLoadedImage();
+        }, 300);
         targetRef.current && targetRef.current?.classList.add(styles.active)
       }else{
         if(contents.id === 'dummy')return;

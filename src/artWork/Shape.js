@@ -105,4 +105,8 @@ export default class Shape {
     const observer = new IntersectionObserver(callback, options);
     observer.observe(this.observeTarget);
   }
+
+  removeShape(){
+    Common.scene.remove(this.mesh);
+  }
 }

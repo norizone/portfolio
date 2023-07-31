@@ -49,7 +49,10 @@ export default class ArtGL {
   deformation(path) {
     //ページ遷移
     this.shape3D.onTransition(path);
-    this.shapeInstance = [];
+    if(path !== 'index' && this.shapeInstance.length>0){
+      this.shapeInstance.forEach((el)=>el.removeShape());
+      this.shapeInstance = [];
+    }
   }
 
   resize() {
@@ -74,11 +77,7 @@ export default class ArtGL {
   }
 
   addShape(addedCanvas, findIndex) {
-    new Promise((reserve) => {
     this.shapeInstance[findIndex] = new Shape(addedCanvas, findIndex);
-      reserve();
-    }).then(() => {
-      this.shapeInstance[findIndex].observerScroll();
-    });
+    this.shapeInstance[findIndex].observerScroll();
   }
 }
