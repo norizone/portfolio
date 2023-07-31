@@ -20,7 +20,12 @@ export async function GET(req: Request) {
       Accept: "application/json",
       "Content-Type": "application/json;charset=utf-8"
     }});
-  const data = await response.json();
-  const {contents} = data
-  return NextResponse.json(contents[0]);
+
+    try {
+      const data = await response.json();
+      const {contents} = data
+      return NextResponse.json(contents[0]);
+    } catch (error) {
+      return
+    }
   }

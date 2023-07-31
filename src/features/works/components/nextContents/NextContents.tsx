@@ -25,11 +25,15 @@ const getNextPage = async (url: string) => {
 
 export const NextContents: FC<Props> = (props) => {
   const { publishedAt } = props;
-  const { data } = useSWR(publishedAt ? `/api/nextPage?publishedAt=${publishedAt}` : null, getNextPage)
+  const { data ,error} = useSWR(publishedAt ? `/api/nextPage?publishedAt=${publishedAt}` : null, getNextPage,{
+    onErrorRetry: (error) => {
+      if (error.status === 404) return  
+    }
+  })
   const contents:Contents = data && data.data
   return (
     <>
-    {data!==undefined &&
+    {(data!==undefined && !error)&&
     <div className={styles.pageNext}>
       <p className={clsx("upper", styles.pageNext__titles)}>
         <span className={styles.pageNext__title} >NEXT WORK</span>
