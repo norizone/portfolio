@@ -2,7 +2,9 @@
 import { useEffect, useState } from 'react';
 
 export const useWindowSize = (): number => {
-  const [windowSize, setWindowSize] = useState(window.innerWidth);
+  const [windowSize, setWindowSize] = useState(
+       typeof window !== 'undefined' ? window.innerWidth :0
+  );
 
   useEffect(() => {
     let timeOutId: number | NodeJS.Timeout = 0
