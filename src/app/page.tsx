@@ -29,7 +29,7 @@ export const metadata: Metadata = {
   url.searchParams.set("limit", '5');
   const response = await fetch(
     url.href,
-    {headers: { "X-MICROCMS-API-KEY": secretKey+'' }}
+    {headers: { "X-MICROCMS-API-KEY": secretKey+'' },cache: "no-store"}
     );
   const data:ListWorks = await response.json();
   return data
