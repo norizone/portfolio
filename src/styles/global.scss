@@ -26,15 +26,15 @@ html {
   $radius: f.vw(375, 20);
   --radius: #{$radius};
   @include f.media("s") {
-    $radius-s: rem(20);
+    $radius-s: f.rem(20);
     --radius: #{$radius-s};
   }
   @include f.media("lg") {
-    $radius-lg: vw(1440, 40);
+    $radius-lg: f.vw(1440, 40);
     --radius: #{$radius-lg};
   }
   @include f.media("xl") {
-    $radius-xxl: rem(40);
+    $radius-xxl: f.rem(40);
     --radius: #{$radius-xxl};
   }
 }
