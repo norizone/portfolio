@@ -20,7 +20,7 @@ export async function GET(req: Request) {
       "X-MICROCMS-API-KEY": process.env.API_KEY + '',
       Accept: "application/json",
       "Content-Type": "application/json;charset=utf-8"
-    }});
+    },cache: "no-store"});
   const data = await response.json();
   return NextResponse.json(data);
   }
