@@ -114,7 +114,7 @@ export const MainContents:FC<Props> = (props) =>{
     <ul className={styles.content__list}>
      {contents.use_tools.map((el,index)=>(
       <li className={clsx( styles.content__item , "inline-block" )} key={index}>
-        {el}{ index + 1 !== contents.use_tools.length ? " / " : "" }
+        {el}{ index + 1 !== contents.use_tools.length ? ` / \S` : "" }
       </li>
      ))}
     </ul>

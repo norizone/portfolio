@@ -131,6 +131,7 @@
       font-weight: var(--font-bold);
       opacity: 1;
       pointer-events: auto;
+      text-shadow: 1px -1px 4px #0000004a;
       &::after {
         transform: scale(1);
       }
