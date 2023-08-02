@@ -90,9 +90,7 @@ export const ContactForm = ()=>{
     const sendData = formArgs.map((el) => {
       return { name: el.nameLabel, label: el.label, value: el.value };
     });
-    await axios.post( process.env.NEXT_PUBLIC_SEND_MAIL_URL+'', sendData, {
-      withCredentials: true,
-    }).then((res)=>{
+    await axios.post( process.env.NEXT_PUBLIC_SEND_MAIL_URL+'', sendData).then((res)=>{
       setIsSending(false);
       setIsSendSuccess(true);
     }).catch((error)=>{
