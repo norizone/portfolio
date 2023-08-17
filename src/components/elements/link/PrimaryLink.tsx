@@ -25,7 +25,7 @@ export const PrimaryLink:FC<Props> = (props) =>{
     <>
     {
     tag=== 'a'&& 
-    <a className={styles.link} href={hrefLink} target={targetBlank?'_blank':'_self'}><span>{ text }</span>{targetBlank&& icon()}</a>
+    <a className={styles.link} href={hrefLink} target={targetBlank?'_blank':'_self'} rel={targetBlank?"noreferrer noopener":""}><span>{ text }</span>{targetBlank&& icon()}</a>
     }
     {
     tag==='Link'&&
