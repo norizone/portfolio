@@ -51,7 +51,7 @@ export const MainContents:FC<Props> = (props) =>{
         if(contents.id === 'dummy')return;
         setTimeout(() => {
           setLoadedImage();
-        }, 300);
+        }, 100);
         targetRef.current && targetRef.current?.classList.add(styles.active)
       }else{
         if(contents.id === 'dummy')return;
@@ -113,8 +113,8 @@ export const MainContents:FC<Props> = (props) =>{
     </div>
     <ul className={styles.content__list}>
      {contents.use_tools.map((el,index)=>(
-      <li className={clsx( styles.content__item , "inline-block" )} key={index}>
-        {el}{ index + 1 !== contents.use_tools.length ? ` / \S` : "" }
+      <li className={clsx( styles.content__item , "inline-block")} key={index}>
+        {el}{ index + 1 !== contents.use_tools.length ? `/` : "" }
       </li>
      ))}
     </ul>
