@@ -82,7 +82,7 @@ export default class Shape {
     ];
     const options = {
       root: null,
-      rootMargin: "-50% 0px",
+      rootMargin: "-40% 0px",
       threshold: 0,
     };
     const callback = (entries) => {
