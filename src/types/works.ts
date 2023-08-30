@@ -26,6 +26,7 @@ export type WorksContent = {
   single_img_pc: WorksImg,
   single_img_sp_1: WorksImg,
   single_img_sp_2: WorksImg,
+  no_referrer:boolean
 }
 
 export type Works = {
