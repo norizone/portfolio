@@ -56,9 +56,8 @@ export const ArticleContent: FC<Props> = (props) => {
           </div>
 
             <p className={styles["article__link"]}>
-            {content.url && !content.no_referrer ?
+            {content.url && !content.no_referrer &&
             <PrimaryLink tag="a" hrefLink={content.url} targetBlank={true} />
-            :<span style={{textTransform:'lowercase'}}>{content.url}</span>
             }
             {content.git_url && 
             <PrimaryLink tag="a" hrefLink={content.git_url} targetBlank={true} text={'git hub'}/>
@@ -70,6 +69,12 @@ export const ArticleContent: FC<Props> = (props) => {
             <dd>{releaseDate}</dd>
             <dt className={styles["upper"]}>Role</dt>
             <dd>{content.role}</dd>
+            {content.url && content.no_referrer &&
+            <>
+            <dt className={styles["upper"]}>URL</dt>
+            <dd>{content.url}</dd>
+            </>
+            }
           </dl>
           </div>
         
