@@ -15,7 +15,6 @@ export const metadata: Metadata = {
 
 const Profile = () => {
   const skills = [
-    "scss",
     "JavaScript",
     "TypeScript",
     "React",
@@ -23,13 +22,14 @@ const Profile = () => {
     "Vue",
     "Nuxt.js",
     "Astro",
+    "scss",
     "WebAudio(tone.js)",
     "WebGL(Three.js)",
     "GSAP",
     "vite",
     "webpack",
-    "PHP",
-    "Twig",
+    "PHP",,
+    "CodeIgniter",
     "WordPress",
     "docker",
     "GitHub",
