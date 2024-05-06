@@ -103,9 +103,10 @@ export const MainContents:FC<Props> = (props) =>{
       className={styles.content__pic} >
         <Image 
         className="canvas_img" //webGl 処理用
-        src={contents.archive_img.url} 
+        src={contents.archive_img.url + "?fm=webp&q=40&dpr=2&w=300"} 
         height={contents.archive_img.height}
         width={contents.archive_img.width}
+        loading="eager"
         alt=""
         ref={imageRef}
         />

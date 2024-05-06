@@ -17,6 +17,14 @@
   @include f.media("xl") {
     right: f.rem(62);
   }
+  > a{
+    transition: opacity .2s linear;
+  }
+  @media (hover:hover) {
+    > a:hover{
+      opacity: .6;
+    }
+  }
 }
 .icon{
   width: 18px;
