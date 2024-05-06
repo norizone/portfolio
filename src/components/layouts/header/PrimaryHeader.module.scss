@@ -34,4 +34,18 @@
     background-image: linear-gradient(rgba(0, 0, 0, 0.69), rgba(0, 0, 0, 0));
     z-index: -1;
   }
+  &__links{
+    display: flex;
+    flex-flow: column nowrap;
+    text-align: right;
+    >a {
+      transition: opacity .1s linear;
+    }
+    @media (hover:hover) {
+      > a:hover{
+        opacity: .6;
+      }
+    }
+  
+  }
 }

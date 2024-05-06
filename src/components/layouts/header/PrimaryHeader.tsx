@@ -5,7 +5,10 @@ export const PrimaryHeader = () =>{
   return (
     <header className={styles.header}>
       <Link className='upper' href={"/"} prefetch={true}>MINAMI<br />TAKANORI</Link>
-      <Link className='upper' href={"/profile"} prefetch={true}>Profile</Link>
+      <div className={styles.header__links}>
+        <Link className='upper' href={"/profile"} prefetch={true}>Profile</Link>
+        {/* <Link className='upper' href={"/"}>Login</Link> */}
+      </div>
   </header>
   )
 }
