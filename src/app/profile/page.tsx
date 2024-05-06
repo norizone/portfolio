@@ -28,7 +28,7 @@ const Profile = () => {
     "GSAP",
     "vite",
     "webpack",
-    "PHP",,
+    "PHP",
     "CodeIgniter",
     "WordPress",
     "docker",
