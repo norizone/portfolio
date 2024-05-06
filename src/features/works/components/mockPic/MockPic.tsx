@@ -139,10 +139,11 @@ export const MockPic: FC<Props> = (props) => {
           <div className={styles.mockPic__glass}></div>
           <picture className={styles["mockPic__pic"]} ref={autoScrollTargetRef}>
             <Image
-              src={images.url + "?fm=webp&q=40"}
+              src={device === "desktop" ? images.url + "?fm=webp&q=60" : images.url + "?fm=webp&q=40&dpr=2&w=280"}
               height={images.height}
               width={images.width}
               alt={title}
+              priority={device === "desktop"}
               loading={device === "desktop" ? "eager" : "lazy"}
               onLoadingComplete={onAutoScroll}
             />
