@@ -145,6 +145,8 @@ export const MockPic: FC<Props> = (props) => {
               alt={title}
               priority={device === "desktop"}
               loading={device === "desktop" ? "eager" : "lazy"}
+              placeholder="blur"
+              blurDataURL={images.url + "?fm=webp&q=0&dpr=1&w=100"}
               onLoadingComplete={onAutoScroll}
             />
           </picture>
