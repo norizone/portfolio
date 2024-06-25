@@ -22,7 +22,7 @@ const getWork= async(slug:string) =>{
   url.searchParams.set("limit", '1');
   const response = await fetch(
     url.href,
-    {headers: { "X-MICROCMS-API-KEY": secretKey+'' }}
+    {headers: { "X-MICROCMS-API-KEY": secretKey+'' },cache: "no-store"}
     );
   const data:Works = await response.json();
   if (data.contents.length < 1 ) {
