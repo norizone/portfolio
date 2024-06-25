@@ -1,0 +1,48 @@
+{
+  "name": "portfolio_next",
+  "version": "0.1.0",
+  "private": true,
+  "scripts": {
+    "dev": "next dev",
+    "build": "next build",
+    "start": "next start",
+    "lint": "next lint"
+  },
+  "dependencies": {
+    "@react-three/fiber": "^8.13.6",
+    "autoprefixer": "10.4.14",
+    "axios": "^1.4.0",
+    "axios-jsonp": "^1.0.4",
+    "clsx": "^2.0.0",
+    "firebase": "^10.1.0",
+    "firebase-admin": "^12.1.0",
+    "framer-motion": "^10.14.0",
+    "gsap": "^3.12.2",
+    "next": "14.1.1",
+    "react": "18.2.0",
+    "react-dom": "18.2.0",
+    "recoil": "^0.7.7",
+    "sass": "^1.64.1",
+    "swr": "^2.2.0",
+    "three": "^0.137.5"
+  },
+  "devDependencies": {
+    "@svgr/webpack": "^8.0.1",
+    "@types/node": "20.4.4",
+    "@types/react": "18.2.15",
+    "@types/react-dom": "18.2.7",
+    "@types/three": "^0.154.0",
+    "eslint": "8.45.0",
+    "eslint-config-next": "13.4.12",
+    "glslify": "^7.1.1",
+    "glslify-loader": "^2.0.0",
+    "postcss": "^8.4.38",
+    "raw-loader": "^4.0.2",
+    "tailwindcss": "3.3.3",
+    "typescript": "5.1.6"
+  },
+  "volta": {
+    "node": "18.x",
+    "npm": "6.12.1"
+  }
+}

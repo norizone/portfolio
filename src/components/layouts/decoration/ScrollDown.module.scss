@@ -1,0 +1,19 @@
+@use '_functions.scss' as f;
+
+.scroll {
+  writing-mode: vertical-lr;
+  position: fixed;
+  bottom: 32px;
+  left: f.vw(375, 18);
+  font-family: var(--font-en);
+  letter-spacing: f.ls(40);
+  z-index: 10;
+  font-weight: var(--font-regular);
+  @include f.media("lg") {
+    left: f.vw(1366, 62);
+    bottom: 82px;
+  }
+  @include f.media("xl") {
+    left: f.rem(62);
+  }
+}
