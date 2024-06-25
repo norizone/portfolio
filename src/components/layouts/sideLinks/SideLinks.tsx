@@ -6,7 +6,7 @@ import MailIcon from "@/assets/common/mail.svg";
 export const SideLinks = () =>{
   return(
     <div className={styles.contact}>
-       <Link href={"/profile/#contact"}>
+      <Link href={"/profile/#contact"}>
         <MailIcon/>
       </Link>
       <a className={styles.icon} href="https://github.com/norizone" target="_blank">
