@@ -9,20 +9,20 @@
   z-index: 100;
   display: block;
   margin-top: f.vw(375, 28);
-  @include f.media("s") {
+  @include f.media('s') {
     margin-top: 28px;
   }
-  @include f.media("lg") {
+  @include f.media('lg') {
     margin-top: vw(1366, 80);
   }
-  @include f.media("xl") {
+  @include f.media('xl') {
     margin-top: 80px;
   }
   &::after,
   &::before {
     height: 1px;
     width: 100%;
-    content: "";
+    content: '';
     position: absolute;
     top: 9px;
     left: 0;
@@ -37,4 +37,3 @@
     transform: rotate(-45deg);
   }
 }
-

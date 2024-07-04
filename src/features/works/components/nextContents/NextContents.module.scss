@@ -2,10 +2,10 @@
 
 .pageNext {
   margin-top: f.vw(375, 134);
-  @include f.media("s") {
+  @include f.media('s') {
     margin-top: 134px;
   }
-  @include f.media("lg") {
+  @include f.media('lg') {
     margin-top: f.vw(1366, 270);
     margin-left: f.vw(1366, -60);
     margin-right: f.vw(1366, -60);
@@ -16,7 +16,7 @@
     flex-flow: row nowrap;
     align-items: center;
   }
-  @include f.media("xl") {
+  @include f.media('xl') {
     width: 988px;
     margin-top: 270px;
     margin-left: -60px;
@@ -43,10 +43,10 @@
   &__link {
     margin-top: f.vw(375, 30);
     display: inline-block;
-    @include f.media("s") {
+    @include f.media('s') {
       margin-top: f.rem(30);
     }
-    @include f.media("lg") {
+    @include f.media('lg') {
       margin-top: 0;
     }
   }

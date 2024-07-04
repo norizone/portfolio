@@ -1,10 +1,10 @@
 @use '_functions.scss' as f;
 .field {
   padding-bottom: f.vw(375, 36);
-  @include f.media("s") {
+  @include f.media('s') {
     padding-bottom: f.rem(36);
   }
-  @include f.media("xl") {
+  @include f.media('xl') {
     width: 100%;
     max-width: 768px;
     display: grid;
@@ -18,7 +18,7 @@
     position: absolute;
     font-size: f.rem(13);
     bottom: -1.4em;
-    @include f.media("lg") {
+    @include f.media('lg') {
       font-size: f.rem(15);
     }
   }
@@ -27,7 +27,7 @@
     display: flex;
     flex-flow: row nowrap;
     align-items: center;
-    @include f.media("xl") {
+    @include f.media('xl') {
       align-items: flex-start;
       flex-flow: column nowrap;
       align-items: flex-start;
@@ -39,7 +39,7 @@
     letter-spacing: f.ls(40);
     font-family: var(--font-en);
     font-weight: var(--font-regular);
-    @include f.media("lg") {
+    @include f.media('lg') {
       font-size: f.rem(16);
     }
   }
@@ -51,7 +51,7 @@
     font-family: var(--font-en);
     font-weight: var(--font-regular);
     margin-left: 1em;
-    @include f.media("xl") {
+    @include f.media('xl') {
       margin-left: 0;
     }
   }
@@ -59,7 +59,7 @@
     position: relative;
     width: auto;
     margin-top: f.rem(7);
-    @include f.media("xl") {
+    @include f.media('xl') {
       margin-top: 0;
     }
   }
@@ -74,7 +74,7 @@
     position: relative;
     width: 100%;
     transition: border 0.2s linear, background 0.2s linear;
-    @include f.media("lg") {
+    @include f.media('lg') {
       min-height: 58px;
     }
     &:focus,
@@ -91,9 +91,8 @@
   &__textarea {
     min-height: 224px;
     padding: 14px 14px;
-    @include f.media("lg") {
+    @include f.media('lg') {
       min-height: 200px;
     }
   }
 }
-

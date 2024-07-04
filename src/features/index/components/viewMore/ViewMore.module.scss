@@ -9,7 +9,6 @@
   }
 }
 
-
 .btn {
   font-size: f.vw(375, 28);
   font-family: var(--font-en);
@@ -18,37 +17,36 @@
   display: flex;
   flex-flow: row nowrap;
   align-items: center;
-  @include f.media("s") {
+  @include f.media('s') {
     font-size: f.rem(28);
   }
-  @include f.media("lg") {
+  @include f.media('lg') {
     font-size: f.vw(1366, 40);
   }
-  @include f.media("xl") {
+  @include f.media('xl') {
     font-size: f.rem(40);
     padding-left: f.rem(110);
   }
 }
-.icon{
-    width: f.vw(375, 16);
-    margin-left: f.vw(375, 10);
-    height: auto;
-    @include f.media("s") {
-      width: f.rem(16);
-      margin-left: f.rem(10);
-    }
-    @include f.media("lg") {
-      width: f.vw(1366, 20);
-      margin-left: f.vw(1366, 22);
-    }
-    @include f.media("xxl") {
-      width: f.rem(20);
-      margin-left: f.rem(22);
-    }
-  & > svg{
+.icon {
+  width: f.vw(375, 16);
+  margin-left: f.vw(375, 10);
+  height: auto;
+  @include f.media('s') {
+    width: f.rem(16);
+    margin-left: f.rem(10);
+  }
+  @include f.media('lg') {
+    width: f.vw(1366, 20);
+    margin-left: f.vw(1366, 22);
+  }
+  @include f.media('xxl') {
+    width: f.rem(20);
+    margin-left: f.rem(22);
+  }
+  & > svg {
     width: 100%;
     height: auto;
     display: block;
   }
 }
-

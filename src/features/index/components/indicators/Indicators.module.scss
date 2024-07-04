@@ -26,13 +26,13 @@
       50% 100%,
       0% var(--indicator-position)
     );
-    @include f.media("lg") {
+    @include f.media('lg') {
       padding: 0;
     }
   }
   &__text {
     display: none;
-    @include f.media("lg") {
+    @include f.media('lg') {
       display: block;
       font-family: var(--font-en);
       font-weight: var(--font-regular);
@@ -54,7 +54,7 @@
   background: var(--color-gray);
   height: 1px;
   transition: background 0.1s ease-in;
-  @include f.media("s") {
+  @include f.media('s') {
     width: f.rem(16);
   }
   & ~ & {

@@ -9,10 +9,10 @@
   z-index: 1;
   line-height: f.lh(100, 90);
   text-transform: uppercase;
-  @include f.media("lg") {
+  @include f.media('lg') {
     font-size: f.vw(1366, 100);
   }
-  @include f.media("xl") {
+  @include f.media('xl') {
     font-size: f.rem(100);
   }
 }

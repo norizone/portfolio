@@ -5,15 +5,15 @@
   position: relative;
   z-index: 0;
   margin-top: f.vw(375, 26);
-  @include f.media("s") {
+  @include f.media('s') {
     margin-top: f.rem(26);
     margin-left: f.rem(30);
   }
-  @include f.media("lg") {
+  @include f.media('lg') {
     margin-top: f.vw(1366, 76);
     margin-left: 0;
   }
-  @include f.media("xl") {
+  @include f.media('xl') {
     margin-top: f.rem(76);
   }
   &__field {
@@ -34,15 +34,15 @@
     margin-left: auto;
     margin-right: auto;
 
-    @include f.media("s") {
+    @include f.media('s') {
       margin-top: 20px;
       font-size: f.rem(28);
     }
-    @include f.media("lg") {
+    @include f.media('lg') {
       font-size: f.vw(1366, 40);
       margin-top: f.vw(1366, 20);
     }
-    @include f.media("xl") {
+    @include f.media('xl') {
       font-size: f.rem(40);
       margin-top: f.rem(20);
       padding-left: f.rem(110);
@@ -51,15 +51,15 @@
       width: f.vw(375, 16);
       margin-left: f.vw(375, 10);
       height: auto;
-      @include f.media("s") {
+      @include f.media('s') {
         width: f.rem(16);
         margin-left: f.rem(10);
       }
-      @include f.media("lg") {
+      @include f.media('lg') {
         width: f.vw(1366, 20);
         margin-left: f.vw(1366, 22);
       }
-      @include f.media("xxl") {
+      @include f.media('xxl') {
         width: f.rem(20);
         margin-left: f.rem(22);
       }
@@ -70,7 +70,7 @@
     color: var(--color-error);
     margin-top: 10px;
     font-size: f.rem(13);
-    @include f.media("lg") {
+    @include f.media('lg') {
       font-size: f.rem(15);
     }
   }
@@ -78,9 +78,8 @@
     text-align: center;
     margin-top: 40px;
     font-size: f.rem(13);
-    @include f.media("lg") {
+    @include f.media('lg') {
       font-size: f.rem(15);
     }
   }
 }
-

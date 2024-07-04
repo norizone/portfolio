@@ -1,83 +1,83 @@
 //main
-import Common from "./Common";
-import Shape from "./Shape";
-import Shape3D from "./Shape3D";
+import Common from './Common'
+import Shape from './Shape'
+import Shape3D from './Shape3D'
 
 export default class ArtGL {
   constructor(props) {
-    this.props = props;
-    this.canvas = props.canvas;
-    this.shape3D = null;
-    this.shapeInstance = []; //DOMから取得する画像の数だけ生成
-    this.init(); // newでinit起動
+    this.props = props
+    this.canvas = props.canvas
+    this.shape3D = null
+    this.shapeInstance = [] //DOMから取得する画像の数だけ生成
+    this.init() // newでinit起動
   }
 
   init() {
     new Promise((resolve) => {
-      Common.init(this.canvas); //commonにcanvasを渡す
-      this.shape3D = new Shape3D();
-      resolve();
+      Common.init(this.canvas) //commonにcanvasを渡す
+      this.shape3D = new Shape3D()
+      resolve()
     }).then(() => {
       const timerResize = setTimeout(() => {
-        clearTimeout(timerResize);
-        window.addEventListener("resize", () => {
-          this.resize();
-        });
-      });
-      this.loop();
-    });
+        clearTimeout(timerResize)
+        window.addEventListener('resize', () => {
+          this.resize()
+        })
+      })
+      this.loop()
+    })
   }
 
   createIndexShape() {
-    const textures = document.querySelectorAll(".canvas-img")
-      ? document.querySelectorAll(".canvas-img")
-      : null;
+    const textures = document.querySelectorAll('.canvas-img')
+      ? document.querySelectorAll('.canvas-img')
+      : null
     if (textures)
       new Promise((resolve) => {
         textures.forEach((el, index) => {
-          this.shapeInstance[index] = new Shape(el, index);
-        });
-        resolve();
+          this.shapeInstance[index] = new Shape(el, index)
+        })
+        resolve()
       }).then(() => {
         if (this.shapeInstance.length > 0)
           this.shapeInstance.forEach((el, index) => {
-            el.observerScroll();
-          });
-      });
+            el.observerScroll()
+          })
+      })
   }
 
   deformation(path) {
     //ページ遷移
-    this.shape3D.onTransition(path);
-    if(path !== 'index' && this.shapeInstance.length>0){
-      this.shapeInstance.forEach((el)=>el.removeShape());
-      this.shapeInstance = [];
+    this.shape3D.onTransition(path)
+    if (path !== 'index' && this.shapeInstance.length > 0) {
+      this.shapeInstance.forEach((el) => el.removeShape())
+      this.shapeInstance = []
     }
   }
 
   resize() {
-    Common.resize();
+    Common.resize()
   }
 
   loop() {
-    this.render();
+    this.render()
     requestAnimationFrame(() => {
-      this.loop();
-    });
+      this.loop()
+    })
   }
 
   render() {
     if (this.shapeInstance.length > 0) {
       this.shapeInstance.forEach((el, index) => {
-        el.update();
-      });
+        el.update()
+      })
     }
-    this.shape3D.update();
-    Common.render();
+    this.shape3D.update()
+    Common.render()
   }
 
   addShape(addedCanvas, findIndex) {
-    this.shapeInstance[findIndex] = new Shape(addedCanvas, findIndex);
-    this.shapeInstance[findIndex].observerScroll();
+    this.shapeInstance[findIndex] = new Shape(addedCanvas, findIndex)
+    this.shapeInstance[findIndex].observerScroll()
   }
 }

@@ -1,16 +1,16 @@
-import { Work } from "@prisma/client"
+import { Work } from '@prisma/client'
 
-export type ResWorkList = Pick<Work , 'id'|'archiveImg'|'titleEn'> & {
-  useTools : string[]
+export type ResWorkList = Pick<Work, 'id' | 'archiveImg' | 'titleEn'> & {
+  useTools: string[]
 }
 
 export type WorkDetail = Work & {
-  useTools : string[]
+  useTools: string[]
 }
 
-export type NextWork = Pick<Work ,'id'|'titleEn'>
+export type NextWork = Pick<Work, 'id' | 'titleEn'>
 
 export type ResWorkDetail = {
-  item:WorkDetail,
-  nextContents?:NextWork
+  item: WorkDetail
+  nextContents?: NextWork
 }
