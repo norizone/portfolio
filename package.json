@@ -9,6 +9,7 @@
     "lint": "next lint"
   },
   "dependencies": {
+    "@hookform/resolvers": "^3.7.0",
     "@prisma/client": "^5.16.0",
     "autoprefixer": "^10.4.19",
     "axios": "^1.7.2",
@@ -18,10 +19,12 @@
     "next": "14.2.4",
     "react": "^18",
     "react-dom": "^18",
+    "react-hook-form": "^7.52.1",
     "recoil": "^0.7.7",
     "sass": "^1.77.6",
     "swr": "^2.2.5",
-    "three": "^0.137.5"
+    "three": "^0.137.5",
+    "yup": "^1.4.0"
   },
   "devDependencies": {
     "@svgr/webpack": "^8.1.0",
