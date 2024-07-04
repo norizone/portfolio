@@ -6,8 +6,9 @@ import useSWR from 'swr'
 import axios from 'axios'
 
 import styles from './NextContents.module.scss'
-import { PrimaryHeadline } from '@/components/elements/headline/PrimaryHeadline'
+
 import type { WorksContent } from '@/types/works'
+import { PrimaryHeadline } from '@/components/elements/headline/primaryHeadline/PrimaryHeadline'
 
 type Props = { publishedAt: string }
 type Contents = Pick<WorksContent, 'title_en' | 'id'>

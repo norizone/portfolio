@@ -1,5 +1,5 @@
-import { PrimaryHeadline } from '@/components/elements/headline/PrimaryHeadline'
-import { PrimaryLink } from '@/components/elements/link/PrimaryLink'
+import { PrimaryHeadline } from '@/components/elements/headline/primaryHeadline/PrimaryHeadline'
+import { PrimaryLink } from '@/components/elements/link/primaryLink/PrimaryLink'
 
 export default function NotFound() {
   return (

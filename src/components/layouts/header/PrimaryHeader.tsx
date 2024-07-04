@@ -1,7 +1,12 @@
 import Link from 'next/link'
 import styles from './PrimaryHeader.module.scss'
 
-export const PrimaryHeader = () => {
+type Props = {
+  isLogin?: boolean
+}
+
+export const PrimaryHeader = (props: Props) => {
+  const { isLogin } = props
   return (
     <header className={styles.header}>
       <Link className="upper" href={'/'} prefetch={true}>
@@ -13,7 +18,15 @@ export const PrimaryHeader = () => {
         <Link className="upper" href={'/profile'} prefetch={true}>
           Profile
         </Link>
-        {/* <Link className='upper' href={"/"}>Login</Link> */}
+        {isLogin ? (
+          <button type="button" onClick={() => {}}>
+            LogOut
+          </button>
+        ) : (
+          <Link className="upper" href={'/login'}>
+            Login
+          </Link>
+        )}
       </div>
     </header>
   )

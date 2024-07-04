@@ -101,7 +101,17 @@ export default class Shape3D {
         gsap.to(this.objectValue, {
           one: -0.8,
           two: -0.6,
-          three: 0.8,
+          three: 1,
+          duration: 0.8,
+          ease: 'slow(0.7, 0.7, false)',
+        })
+        break
+
+      case 'login':
+        gsap.to(this.objectValue, {
+          one: 0,
+          two: 0.2,
+          three: 0.6,
           duration: 0.8,
           ease: 'slow(0.7, 0.7, false)',
         })

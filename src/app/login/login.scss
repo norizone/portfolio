@@ -1,0 +1,18 @@
+@use '_functions.scss' as f;
+
+.login {
+  margin-top: f.vw(375, 70);
+  @include f.media('s') {
+    margin-top: 70px;
+  }
+  @include f.media('lg') {
+    margin-top: f.vw(1280, 130);
+  }
+  @include f.media('xl') {
+    margin-top: 130px;
+  }
+  &__form {
+    width: 80%;
+    margin-inline: auto;
+  }
+}

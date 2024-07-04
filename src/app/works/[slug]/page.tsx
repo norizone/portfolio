@@ -2,7 +2,7 @@ import { clsx } from 'clsx'
 import { notFound } from 'next/navigation'
 import type { Metadata } from 'next'
 
-import { BackToTop } from '@/components/elements/btn/BackToTop'
+import { BackToTop } from '@/components/elements/btn/backToTop/BackToTop'
 import { PrimaryFooter } from '@/components/layouts/footer/PrimaryFooter'
 import { ArticleContent } from '@/features/works/components/articleContents/ArticleContents'
 import type { Works } from '@/types/works'

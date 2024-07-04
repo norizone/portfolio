@@ -1,13 +1,13 @@
 import clsx from 'clsx'
 import type { Metadata } from 'next'
 
-// import "./profile.scss";
-import { BackToTop } from '@/components/elements/btn/BackToTop'
+import './login.scss'
+import { BackToTop } from '@/components/elements/btn/backToTop/BackToTop'
 import { PrimaryFooter } from '@/components/layouts/footer/PrimaryFooter'
-import { NumberingHeadLine } from '@/features/profile/components/numberingHeadline/NumberingHeadline'
-import { ContactForm } from '@/features/profile/components/contactForm/ContactForm'
+import { NumberingHeadLine } from '@/components/elements/headline/numberingHeadline/NumberingHeadline'
 import MotionWrap from '@/components/layouts/wrap/MotionWrap'
 import { SetActive } from '@/features/profile/hooks/SetActive'
+import { LoginForm } from '@/features/login/components/loginForm/LoginForm'
 
 export const metadata: Metadata = {
   title: 'login',
@@ -19,8 +19,11 @@ const Profile = () => {
       <SetActive />
       <div className={clsx('l-wrap', '-secondary')}>
         <BackToTop />
-        <section className="contents">
-          <h1>login</h1>
+        <section className="login">
+          <NumberingHeadLine tag="h1" text={'login'} />
+          <div className="login__form">
+            <LoginForm />
+          </div>
         </section>
         <PrimaryFooter />
       </div>

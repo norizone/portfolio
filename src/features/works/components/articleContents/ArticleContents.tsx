@@ -1,11 +1,11 @@
 import { FC } from 'react'
 
-import { PrimaryHeadline } from '@/components/elements/headline/PrimaryHeadline'
-import { PrimaryLink } from '@/components/elements/link/PrimaryLink'
+import { PrimaryLink } from '@/components/elements/link/primaryLink/PrimaryLink'
 import type { Works } from '@/types/works'
 import styles from './ArticleContents.module.scss'
 import { MockPic } from '../mockPic/MockPic'
 import { SetActive } from '../../hooks/SetActive'
+import { PrimaryHeadline } from '@/components/elements/headline/primaryHeadline/PrimaryHeadline'
 
 type Props = {
   data: Works
