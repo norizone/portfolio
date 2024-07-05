@@ -1,6 +1,6 @@
-import styles from './Input.module.scss'
+import styles from './PrimaryInput.module.scss'
 import { forwardRef } from 'react'
-import BaseInput, { BaseInputProps } from './BaseInput'
+import BaseInput, { BaseInputProps } from '../BaseInput'
 import clsx from 'clsx'
 
 export type Props = Omit<BaseInputProps, 'inputClassName'> & {
@@ -14,7 +14,7 @@ export const PrimaryInput = forwardRef<HTMLInputElement, Props>(
     return (
       <BaseInput
         ref={ref}
-        inputClassName={clsx(styles.field__box, styles.full, customClassName)}
+        inputClassName={clsx(styles.field__box, customClassName)}
         {...baseInputProps}
       />
     )

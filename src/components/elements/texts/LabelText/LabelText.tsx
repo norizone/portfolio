@@ -1,11 +1,10 @@
 import clsx from 'clsx'
-import styles from './Input.module.scss'
+import styles from './LabelText.module.scss'
 import { ElementType, LabelHTMLAttributes } from 'react'
 
 export type LabelTextProps = {
   label: string
   as?: ElementType
-  lang?: 'jp' | 'en'
   required?: boolean
   labelClassName?: string
   labelProps?: LabelHTMLAttributes<HTMLLabelElement>

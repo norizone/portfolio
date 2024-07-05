@@ -1,7 +1,8 @@
-import styles from './Input.module.scss'
+import primaryStyles from '../primaryInput/PrimaryInput.module.scss'
+import style from './PasswordInput.module.scss'
 import { HTMLInputTypeAttribute, forwardRef, useState } from 'react'
-import BaseInput, { BaseInputProps } from './BaseInput'
-import { VisibilityIcon } from '../icon/VisibilityIcon'
+import BaseInput, { BaseInputProps } from '../BaseInput'
+import { VisibilityIcon } from '../../icon/VisibilityIcon'
 import clsx from 'clsx'
 
 export type Props = Omit<BaseInputProps, 'inputClassName' | 'type'> & {
@@ -20,21 +21,17 @@ export const PasswordInput = forwardRef<HTMLInputElement, Props>(
     }
 
     return (
-      <div
-        className={
-          'flex flex-row flex-nowrap border border-border w-full rounded-sm overflow-hidden'
-        }
-      >
+      <div className={style.wrap}>
         <BaseInput
           ref={ref}
-          inputClassName={clsx(styles.field__box, styles.full, customClassName)}
+          inputClassName={clsx(primaryStyles.field__box, customClassName)}
           type={inputType}
           {...baseInputProps}
         />
         <button
           type="button"
           onClick={handlerPasswordType}
-          className="fill-border hover:fill-primary transition-all w-[30px] px-[5px] rounded-sm"
+          className={style.icon}
           aria-label={
             inputType === 'password'
               ? 'パスワードを表示する'

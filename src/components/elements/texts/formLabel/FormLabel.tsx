@@ -1,7 +1,10 @@
-import styles from './Input.module.scss'
-import { ErrorMessage, ErrorMessageProps } from './ErrorMessage'
-import { LabelText, LabelTextProps } from './LabelText'
+import styles from './FormLabel.module.scss'
 import { ReactNode } from 'react'
+import {
+  ErrorMessageProps,
+  FieldErrorMessage,
+} from '../errorMessage/FieldErrorMessage'
+import { LabelText, LabelTextProps } from '../LabelText/LabelText'
 
 type Props = LabelTextProps &
   ErrorMessageProps & {
@@ -16,12 +19,7 @@ export const FormLabel = (props: Props) => {
       <LabelText {...labelProps} />
       <div className={styles['field__box-wrap']}>
         {children}
-        {errorMessage && (
-          <ErrorMessage
-            errorMessage={errorMessage}
-            className="absolute bottom-[-1.8em] ml-[1em]"
-          />
-        )}
+        {errorMessage && <FieldErrorMessage errorMessage={errorMessage} />}
       </div>
     </div>
   )

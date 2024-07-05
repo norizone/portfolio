@@ -19,8 +19,8 @@ export const PrimaryHeader = (props: Props) => {
           Profile
         </Link>
         {isLogin ? (
-          <button type="button" onClick={() => {}}>
-            LogOut
+          <button className="upper" type="button">
+            Logout
           </button>
         ) : (
           <Link className="upper" href={'/login'}>

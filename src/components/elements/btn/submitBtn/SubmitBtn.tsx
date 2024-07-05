@@ -1,7 +1,7 @@
 import { ReactNode } from 'react'
 import styles from './SubmitBtn.module.scss'
 import { LoadingIcon } from '../../icon/loadingIcon/LoadingIcon'
-import { ArrowIcon } from '../../icon/ArrowIcon/ArrowIcon'
+import { ArrowIcon } from '../../icon/arrowIcon/ArrowIcon'
 
 type Props = {
   text: string | ReactNode
