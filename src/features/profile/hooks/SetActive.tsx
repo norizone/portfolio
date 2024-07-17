@@ -1,12 +1,12 @@
 'use client'
-import { useRecoilState } from 'recoil'
+import { useAtom } from 'jotai'
 import { activeWorkState } from '@/stores/worksStates'
 import { useEffect } from 'react'
 
 export const SetActive = () => {
-  const [_, setActiveWork] = useRecoilState(activeWorkState)
+  const [_, setActiveWork] = useAtom(activeWorkState)
   useEffect(() => {
-    // setActiveWork(0)
+    setActiveWork(0)
   }, [])
   return <></>
 }

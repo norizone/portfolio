@@ -14,6 +14,7 @@ import {
   widthRegex,
 } from '@/utils/extractFromUrl'
 import { WorkItemRes } from '@/types/api/front'
+import { useAtom } from 'jotai'
 
 type Props = {
   contents: WorkItemRes
@@ -27,8 +28,8 @@ export const MainContents: FC<Props> = (props) => {
   const { contents, contentsIndex, isScrollTarget } = props
   const targetRef = useRef<HTMLElement>(null)
   const imageRef = useRef<HTMLImageElement>(null)
-  const [_, setActiveWork] = useRecoilState(activeWorkState)
-  const [loadedImages, setLoadedImages] = useRecoilState(loadedImagesState)
+  const [_, setActiveWork] = useAtom(activeWorkState)
+  const [loadedImages, setLoadedImages] = useAtom(loadedImagesState)
   const { onScrollToTarget } = useScrollToTarget()
   useEffect(() => {
     return () => {

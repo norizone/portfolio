@@ -1,17 +1,17 @@
 'use client'
 import { useRef, useEffect, useState } from 'react'
-import { useRecoilState } from 'recoil'
 import { usePathname } from 'next/navigation'
 
 import ArtGL from './main.js'
 import { loadedImagesState } from '@/stores/worksStates'
+import { useAtom } from 'jotai'
 
 export const ArtWork = () => {
   const canvasRef = useRef(null)
   const [GL, setGL] = useState<ArtGL>()
   const router = usePathname()?.replace('/', '')
   const path = !router ? 'index' : router
-  const [loadedImage, setLoadedImage] = useRecoilState(loadedImagesState)
+  const [loadedImage, setLoadedImage] = useAtom(loadedImagesState)
   let loadedShapeCount: Array<number> = []
 
   useEffect(() => {

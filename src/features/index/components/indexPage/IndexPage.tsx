@@ -7,8 +7,6 @@ import {
   useRef,
   useState,
 } from 'react'
-import { useRecoilState, useRecoilValue } from 'recoil'
-
 import { MainContents } from '@/features/index/components/mainContents/MainContents'
 import { ViewMore } from '../viewMore/ViewMore'
 import { Indicators } from '../indicators/Indicators'
@@ -17,6 +15,7 @@ import { activeWorkState, composeWorksList } from '@/stores/worksStates'
 import { WorkListRes } from '@/types/api/front'
 import { useGetWorkList } from '@/hooks/api/front.hooks'
 import { useIntersectionObserver } from '../../hooks/useIntersectionObserver'
+import { useAtom, useAtomValue } from 'jotai'
 
 type Props = {
   SSRData: WorkListRes
@@ -28,8 +27,8 @@ export const IndexPage = (props: Props) => {
   const { SSRData, pageSize, defaultPage } = props
   const [page, setPage] = useState(defaultPage)
   const viewMoreRef = useRef<HTMLDivElement | null>(null)
-  const [works, setWorks] = useRecoilState(composeWorksList)
-  const activeIndex = useRecoilValue(activeWorkState)
+  const [works, setWorks] = useAtom(composeWorksList)
+  const activeIndex = useAtomValue(activeWorkState)
   const activeWork = useRef<number>(activeIndex)
 
   const {

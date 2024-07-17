@@ -1,10 +1,10 @@
 'use client'
 import clsx from 'clsx'
 import { useEffect, type FC, useRef } from 'react'
-import { useRecoilValue } from 'recoil'
 import styles from './Indicators.module.scss'
 import { activeWorkState } from '@/stores/worksStates'
 import { WorkItemRes } from '@/types/api/front'
+import { useAtomValue } from 'jotai'
 
 type Props = {
   works: WorkItemRes[]
@@ -12,7 +12,7 @@ type Props = {
 
 export const Indicators: FC<Props> = (props) => {
   const { works } = props
-  const activeWork = useRecoilValue(activeWorkState)
+  const activeWork = useAtomValue(activeWorkState)
   const indicatorsRef = useRef<HTMLDivElement>(null)
 
   useEffect(() => {
