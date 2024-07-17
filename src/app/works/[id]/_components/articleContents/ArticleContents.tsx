@@ -1,72 +1,68 @@
 import { FC } from 'react'
 
 import { PrimaryLink } from '@/components/elements/link/primaryLink/PrimaryLink'
-import type { Works } from '@/types/works'
 import styles from './ArticleContents.module.scss'
-import { MockPic } from '../mockPic/MockPic'
-import { SetActive } from '../../hooks/SetActive'
+import { MockPic } from '@/features/works/components/mockPic/MockPic'
+import { SetActive } from '../../../../../features/works/hooks/SetActive'
 import { PrimaryHeadline } from '@/components/elements/headline/primaryHeadline/PrimaryHeadline'
+import { DetailWork } from '@/types/api/front'
 
 type Props = {
-  data: Works
+  item: DetailWork
 }
 
 export const ArticleContent: FC<Props> = (props) => {
-  const { data } = props
-  const content = data.contents[0]
+  const { item } = props
   const formatDate = (date: Date) => {
     const y = date.getFullYear()
     const m = date.getMonth() + 1
     return `${y}年${m}月`
   }
-  const releaseDate = content.creation_date
-    ? formatDate(new Date(content.creation_date))
-    : ''
-  const pics = [
-    content.single_img_pc,
-    content.single_img_sp_1,
-    content.single_img_sp_2,
-  ]
-  const topImageIndex = content.single_img_pc.url ? 0 : 1
+  // const releaseDate = content.creation_date
+  //   ? formatDate(new Date(content.creation_date))
+  //   : ''
+  const pics = [item.singleImgMain, item.singleImgSub, item.singleImgSub2]
+
+  const topImageIndex = item.singleImgMain ? 0 : 1
   const mobilePics = [...pics.slice(topImageIndex + 1)]
   return (
     <section className={styles.article}>
-      <SetActive pageId={content.id} />
+      <SetActive pageId={item.id} />
       <div className={styles.article__headline}>
-        <PrimaryHeadline tag={'h1'} text={content.title_en} />
+        <PrimaryHeadline tag={'h1'} text={item.titleEn} />
       </div>
       <div className={styles['article__top-pic-wrap']}>
         <MockPic
-          device={topImageIndex === 0 ? 'desktop' : 'mobile'}
-          title={content.title}
-          images={pics[topImageIndex]}
+          device={'desktop'}
+          title={item.title}
+          imageUrl={item.singleImgMain}
         />
       </div>
       <div className={styles['article__descriptions']}>
-        <p className={styles['article__title']}>{content.title}</p>
+        <p className={styles['article__title']}>{item.title}</p>
         <div className={styles['article__comment']}>
           <p>
-            {content.use_tools.map((el, index) => (
+            {item.useTools.map((tool, index) => (
               <span className={styles['inline-block']} key={index}>
-                {el}
-                {index + 1 !== content.use_tools.length ? ' / ' : ''}
+                {tool.toolName}
+                {index + 1 !== item.useTools.length ? ' / ' : ''}
               </span>
             ))}
             <br />
           </p>
-          {content.comment && (
-            <p dangerouslySetInnerHTML={{ __html: content.comment }}></p>
+          {item.comment && (
+            <p dangerouslySetInnerHTML={{ __html: item.comment }}></p>
           )}
         </div>
 
         <p className={styles['article__link']}>
-          {content.url && !content.no_referrer && (
+          {/* {item.url && !content.no_referrer && (
             <PrimaryLink tag="a" hrefLink={content.url} targetBlank={true} />
-          )}
-          {content.git_url && (
+          )} */}
+          {item.gitUrl && (
             <PrimaryLink
               tag="a"
-              hrefLink={content.git_url}
+              hrefLink={item.gitUrl}
               targetBlank={true}
               text={'git hub'}
             />
@@ -74,31 +70,23 @@ export const ArticleContent: FC<Props> = (props) => {
         </p>
 
         <dl className={styles['article__data']}>
-          <dt className={styles['upper']}>Release</dt>
-          <dd>{releaseDate}</dd>
+          {/* <dt className={styles['upper']}>Release</dt>
+          <dd>{releaseDate}</dd> */}
           <dt className={styles['upper']}>Role</dt>
-          <dd>{content.role}</dd>
-          {content.url && content.no_referrer && (
+          <dd>{item.role}</dd>
+          {item.url && (
             <>
               <dt className={styles['upper']}>URL</dt>
-              <dd>{content.url}</dd>
+              <dd>{item.url}</dd>
             </>
           )}
         </dl>
       </div>
 
       <div className={styles['article__spPic-wrap']}>
-        {mobilePics.map(
+        {[item.singleImgSub, item.singleImgSub2].map(
           (el, index) =>
-            el &&
-            el.url && (
-              <MockPic
-                device={'mobile'}
-                images={el}
-                title={content.title}
-                key={index}
-              />
-            )
+            el && <MockPic device={'mobile'} imageUrl={el} key={index} />
         )}
       </div>
     </section>

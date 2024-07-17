@@ -72,18 +72,7 @@ export const LoginForm = () => {
         <ErrorMessageBox customClassName="mt-[1em]">
           {errorMessage}
         </ErrorMessageBox>
-      )}
-      <div className="mt-[2em] flex-center">
-        <PrimaryBtn
-          isLoading={isLoginPending || isSignUpPending}
-          btnColor="primary"
-          btnProps={{
-            type: 'submit',
-          }}
-          onClick={() => {}}
-        >
-          Login
-        </PrimaryBtn> */}
+      )} */}
       </div>
     </form>
   )

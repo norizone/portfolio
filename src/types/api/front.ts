@@ -28,36 +28,34 @@ export type LoginBody = {
  * Work
  */
 export type WorkTool = {
-  id: number
+  toolName: string
 }
 
-export type CreateWorkBody = {
-  permission: number
-  publication: number
-  title: string
-  titleEn: string
-  archiveImg: string
-  useTools: {
-    id: number
-  }[]
-  comment?: string | null
-  url?: string | null
-  gitUrl?: string | null
-  role: string
-  singleImgMain: string
-  singleImgSub: string
-  singleImgSub2?: string | null
+export type DetailWork = Omit<
+  Work,
+  | 'createdAt'
+  | 'permission'
+  | 'order'
+  | 'publication'
+  | 'updateAt'
+  | 'archiveImg'
+> & {
+  useTools: WorkTool[]
 }
 
-export type uploadImageRes = {
-  archiveImg: string
-  singleImgMain: string
-  singleImgSub: string
-  singleImgSub2: string
+export type NextWork = Pick<Work, 'titleEn' | 'id'>
+
+export type DetailWorkRes = {
+  item: DetailWork
+  nextContents: NextWork | null
+}
+
+export type WorkItemRes = Pick<Work, 'archiveImg' | 'titleEn' | 'id'> & {
+  useTools: WorkTool[]
 }
 
 export type WorkListRes = {
-  items: Work[]
+  items: WorkItemRes[]
   totalPages: number
   totalCount: number
 }
@@ -74,26 +72,4 @@ export type CreateUserBody = EditUserBody & {
 export type EditUserBody = {
   email: string
   permission: number
-}
-
-/**
- * Tool
- */
-export type ToolData = Pick<Tool, 'id' | 'toolName'>
-
-export type CreateToolBody = Pick<ToolData, 'toolName'>
-
-export type UpdateToolsBody = {
-  tools: ToolData[]
-}
-
-export type DeleteToolParams = Pick<ToolData, 'id'>
-
-/**
- * Dashboard
- */
-export type ResDashboardData = {
-  workCount?: number
-  userCount?: number
-  toolCount?: number
 }

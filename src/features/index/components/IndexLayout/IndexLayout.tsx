@@ -1,12 +1,5 @@
 'use client'
-import {
-  Fragment,
-  useEffect,
-  useLayoutEffect,
-  useMemo,
-  useRef,
-  useState,
-} from 'react'
+import { useEffect, useMemo, useRef, useState } from 'react'
 import { useRecoilState, useRecoilValue } from 'recoil'
 
 import { MainContents } from '@/features/index/components/mainContents/MainContents'
@@ -49,10 +42,7 @@ export const IndexPage = (props: Props) => {
 
   useMemo(() => {
     if (!dataWorkList) return
-    const newIds = new Set(dataWorkList.items.map((item) => item.id))
-    const filteredWorks = works.filter((work) => !newIds.has(work.id))
-    const newWorkList = [...filteredWorks, ...dataWorkList.items]
-    setWorks(newWorkList)
+    setWorks([...works, ...dataWorkList?.items])
   }, [dataWorkList])
 
   const { handleObserve } = useIntersectionObserver({
@@ -61,13 +51,13 @@ export const IndexPage = (props: Props) => {
     page,
   })
 
-  useLayoutEffect(() => {
+  useEffect(() => {
     if (!viewMoreRef || !viewMoreRef.current) return
     handleObserve(viewMoreRef)
   }, [handleObserve, viewMoreRef])
 
   return (
-    <>
+    <div>
       <div className={styles.index_contents__wrap} id="js-canvasTargetWrap">
         {works.map((el, index) => (
           <MainContents
@@ -85,6 +75,6 @@ export const IndexPage = (props: Props) => {
         />
       </div>
       {works.length > 1 && <Indicators works={works} />}
-    </>
+    </div>
   )
 }

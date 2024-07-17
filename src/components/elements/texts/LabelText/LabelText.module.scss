@@ -10,6 +10,17 @@
     }
   }
 
+  &__labels {
+    display: flex;
+    flex-flow: row nowrap;
+    align-items: center;
+    @include f.media('xl') {
+      align-items: flex-start;
+      flex-flow: column nowrap;
+      align-items: flex-start;
+    }
+  }
+
   &__require {
     font-size: f.rem(14);
     color: var(--color-error);

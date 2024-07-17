@@ -7,11 +7,16 @@ import { useRecoilState } from 'recoil'
 
 import styles from './MainContents.module.scss'
 import { activeWorkState, loadedImagesState } from '@/stores/worksStates'
-import type { ListWorksContents } from '@/types/works'
 import { useScrollToTarget } from '../../hooks/useScrollToTarget'
+import {
+  extractNumberFromUrl,
+  heightRegex,
+  widthRegex,
+} from '@/utils/extractFromUrl'
+import { WorkItemRes } from '@/types/api/front'
 
 type Props = {
-  contents: ListWorksContents
+  contents: WorkItemRes
   contentsIndex: number
   isScrollTarget?: boolean
 }
@@ -70,64 +75,68 @@ export const MainContents: FC<Props> = (props) => {
     new IntersectionObserver(scrollCallback, options).observe(targetRef.current)
   }
 
-  return (
-    <>
-      {contents.id === 'dummy' ? (
-        <section
-          className={clsx(styles.topContent, 'l-wrap -secondary')}
-          ref={targetRef}
-        >
-          <h1 className={styles.topContent__title}>
-            FRONT-END
-            <br className="sp" />
-            DEVELOPER.
+  const renderWorkContents = () => {
+    return (
+      <>
+        <div className={styles.content__header}>
+          <h1
+            className={clsx(
+              styles.content__title,
+              'upper',
+              'js-effectPicTarget'
+            )}
+          >
+            <Link
+              className={styles['content__title-link']}
+              href={'works/' + contents.id}
+              dangerouslySetInnerHTML={{ __html: contents.titleEn }}
+            ></Link>
           </h1>
-        </section>
-      ) : (
-        <section
-          className={clsx('l-wrap -secondary', styles.content)}
-          ref={targetRef}
-          id={contents.id}
-        >
-          <div className={styles.content__header}>
-            <h2
-              className={clsx(
-                styles.content__title,
-                'upper',
-                'js-effectPicTarget'
-              )}
+          <Link href={'works/' + contents.id} className={styles.content__pic}>
+            <Image
+              className="canvas_img" //webGl 処理用
+              src={contents.archiveImg}
+              height={extractNumberFromUrl(contents.archiveImg, heightRegex)}
+              width={extractNumberFromUrl(contents.archiveImg, widthRegex)}
+              loading="eager"
+              alt=""
+              ref={imageRef}
+            />
+          </Link>
+        </div>
+        <ul className={styles.content__list}>
+          {contents.useTools.map((el, index) => (
+            <li
+              className={clsx(styles.content__item, 'inline-block')}
+              key={index}
             >
-              <Link
-                className={styles['content__title-link']}
-                href={'works/' + contents.id}
-                dangerouslySetInnerHTML={{ __html: contents.title_en }}
-              ></Link>
-            </h2>
-            <Link href={'works/' + contents.id} className={styles.content__pic}>
-              <Image
-                className="canvas_img" //webGl 処理用
-                src={contents.archive_img.url + '?fm=webp&q=40&dpr=2&w=300'}
-                height={contents.archive_img.height}
-                width={contents.archive_img.width}
-                loading="eager"
-                alt=""
-                ref={imageRef}
-              />
-            </Link>
-          </div>
-          <ul className={styles.content__list}>
-            {contents.use_tools.map((el, index) => (
-              <li
-                className={clsx(styles.content__item, 'inline-block')}
-                key={index}
-              >
-                {el}
-                {index + 1 !== contents.use_tools.length ? `/` : ''}
-              </li>
-            ))}
-          </ul>
-        </section>
+              {el.toolName}
+              {index + 1 !== contents.useTools.length ? `/` : ''}
+            </li>
+          ))}
+        </ul>
+      </>
+    )
+  }
+
+  return (
+    <section
+      className={clsx(
+        'l-wrap -secondary',
+        contents.id === 'dummy' ? styles.topContent : styles.content
       )}
-    </>
+      ref={targetRef}
+      id={`${contents.id}`}
+    >
+      {contents.id === 'dummy' ? (
+        <h1 className={styles.topContent__title}>
+          FRONT-END
+          <br className="sp" />
+          DEVELOPER.
+        </h1>
+      ) : (
+        renderWorkContents()
+      )}
+    </section>
   )
 }

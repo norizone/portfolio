@@ -3,7 +3,7 @@ import { useRecoilState, useRecoilValue } from 'recoil'
 import { activeWorkState, composeWorksList } from '@/stores/worksStates'
 import { useEffect } from 'react'
 
-export const SetActive = ({ pageId }: { pageId: string }) => {
+export const SetActive = ({ pageId }: { pageId: string | number }) => {
   const [_, setActiveWork] = useRecoilState(activeWorkState)
   const worksList = useRecoilValue(composeWorksList)
   useEffect(() => {

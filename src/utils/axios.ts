@@ -2,9 +2,10 @@
 // import { authLogout } from '@/hooks/api/auth'
 
 import axios, { AxiosError, AxiosInstance, AxiosResponse } from 'axios'
+import { baseURL } from './apiUrl'
 
 export const axiosClient: AxiosInstance = axios.create({
-  baseURL: `${process.env.NEXT_PUBLIC_API_URL}/front`,
+  baseURL: baseURL,
   withCredentials: true,
 })
 

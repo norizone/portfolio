@@ -78,6 +78,23 @@ img {
   text-transform: uppercase;
 }
 
+.hidden {
+  display: none !important;
+  pointer-events: none !important;
+}
+
+.flex-center {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  &.-col {
+    flex-flow: column;
+  }
+  &.-rol {
+    flex-flow: row;
+  }
+}
+
 .inline-block {
   display: inline-block;
 }

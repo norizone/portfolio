@@ -19,7 +19,7 @@ export const LabelText = (props: LabelTextProps) => {
     labelProps,
   } = props
   return (
-    <CustomTag {...labelProps}>
+    <CustomTag {...labelProps} className={styles.field__labels}>
       <span className={clsx(styles.field__label, 'upper', labelClassName)}>
         {label}
       </span>

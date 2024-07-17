@@ -21,10 +21,6 @@ export const metadata: Metadata = {
     template: '%s | minami takanori portfolio',
   },
   description: 'minami takanori portfolio',
-  viewport: {
-    width: 'device-width',
-    initialScale: 1,
-  },
   icons: {
     icon: '/ico.png',
   },

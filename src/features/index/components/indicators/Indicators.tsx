@@ -2,14 +2,12 @@
 import clsx from 'clsx'
 import { useEffect, type FC, useRef } from 'react'
 import { useRecoilValue } from 'recoil'
-
 import styles from './Indicators.module.scss'
 import { activeWorkState } from '@/stores/worksStates'
-
-import type { ListWorksContents } from '@/types/works'
+import { WorkItemRes } from '@/types/api/front'
 
 type Props = {
-  works: Array<ListWorksContents>
+  works: WorkItemRes[]
 }
 
 export const Indicators: FC<Props> = (props) => {
@@ -33,7 +31,7 @@ export const Indicators: FC<Props> = (props) => {
       <div className={styles.indicators__inner} ref={indicatorsRef}>
         <p
           className={clsx(styles.indicators__text, 'upper')}
-          dangerouslySetInnerHTML={{ __html: works[activeWork].title_en }}
+          dangerouslySetInnerHTML={{ __html: works[activeWork].titleEn }}
         ></p>
         <div className={styles.indicators__clip}>
           {works.map((el, index) => (

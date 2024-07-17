@@ -8,6 +8,7 @@ import { NumberingHeadLine } from '@/components/elements/headline/numberingHeadl
 import MotionWrap from '@/components/layouts/wrap/MotionWrap'
 import { SetActive } from '@/features/profile/hooks/SetActive'
 import { LoginForm } from '@/features/login/components/loginForm/LoginForm'
+import { PrimaryHeadline } from '@/components/elements/headline/primaryHeadline/PrimaryHeadline'
 
 export const metadata: Metadata = {
   title: 'login',
@@ -20,12 +21,16 @@ const Profile = () => {
       <div className={clsx('l-wrap', '-secondary')}>
         <BackToTop />
         <section className="login">
-          <NumberingHeadLine tag="h1" text={'login'} />
-          <div className="login__form">
-            <LoginForm />
+          <div className="login__wrap">
+            <h1 className="login__headline">
+              Please log in <br />
+              to view the actual case.
+            </h1>
+            <div className="login__form">
+              <LoginForm />
+            </div>
           </div>
         </section>
-        <PrimaryFooter />
       </div>
     </MotionWrap>
   )

@@ -10,13 +10,16 @@ import desktopMock from '@/assets/works/desktop.webp'
 import mobileMockS from '@/assets/works/mobile-s.webp'
 import mobileMock from '@/assets/works/mobile.webp'
 import { useWindowSize } from '@/hooks/useWindoSize'
-
-import type { WorksImg } from '@/types/works'
+import {
+  extractNumberFromUrl,
+  heightRegex,
+  widthRegex,
+} from '@/utils/extractFromUrl'
 
 type Props = {
   device: 'desktop' | 'mobile'
-  images: WorksImg
-  title: string
+  imageUrl: string
+  title?: string
 }
 
 const mocks = {
@@ -32,7 +35,7 @@ export const MockPic: FC<Props> = (props) => {
   let executionScrollCount = 0 //スクロールさせる回数
   let remainder = 0 //余り
   let scrollRange = 0 // スクロール値
-  const { device, images, title } = props
+  const { device, imageUrl, title } = props
   const [isLoaded, setIsLoaded] = useState<boolean>(false)
   const [timeLine, setTimeLine] = useState<gsap.core.Timeline>()
   const autoScrollParentRef = useRef<HTMLDivElement | null>(null)
@@ -139,18 +142,12 @@ export const MockPic: FC<Props> = (props) => {
           <div className={styles.mockPic__glass}></div>
           <picture className={styles['mockPic__pic']} ref={autoScrollTargetRef}>
             <Image
-              src={
-                device === 'desktop'
-                  ? images.url + '?fm=webp&q=60'
-                  : images.url + '?fm=webp&q=40&dpr=2&w=280'
-              }
-              height={images.height}
-              width={images.width}
-              alt={title}
+              src={imageUrl}
+              height={extractNumberFromUrl(imageUrl, heightRegex)}
+              width={extractNumberFromUrl(imageUrl, widthRegex)}
+              alt=""
               priority={device === 'desktop'}
               loading={device === 'desktop' ? 'eager' : 'lazy'}
-              placeholder="blur"
-              blurDataURL={images.url + '?fm=webp&q=0&dpr=1&w=100'}
               onLoadingComplete={onAutoScroll}
             />
           </picture>

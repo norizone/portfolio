@@ -1,24 +1,19 @@
 import { atom } from 'recoil'
-
-import type { ListWorksContents } from '@/types/works'
+import { WorkItemRes } from '@/types/api/front'
 
 export const activeWorkState = atom<number>({
   key: 'activeWorkState',
   default: 0,
 })
 
-export const composeWorksList = atom<Array<ListWorksContents>>({
+export const composeWorksList = atom<Array<WorkItemRes>>({
   key: 'composeWorksList',
   default: [
     {
       id: 'dummy',
-      title_en: '',
-      archive_img: {
-        url: '',
-        height: 0,
-        width: 0,
-      },
-      use_tools: [''],
+      titleEn: '',
+      archiveImg: '',
+      useTools: [],
     },
   ],
 })

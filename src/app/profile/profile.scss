@@ -2,13 +2,13 @@
 
 .contents {
   margin-top: f.vw(375, 70);
-  @include f.media("s") {
+  @include f.media('s') {
     margin-top: 70px;
   }
-  @include f.media("lg") {
+  @include f.media('lg') {
     margin-top: f.vw(1280, 130);
   }
-  @include f.media("xl") {
+  @include f.media('xl') {
     margin-top: 130px;
   }
   &__text {
@@ -18,17 +18,17 @@
     font-weight: var(--font-regular);
     line-height: f.lh(32, 46);
     letter-spacing: 0;
-    @include f.media("s") {
+    @include f.media('s') {
       font-size: f.rem(31);
       margin-top: 24px;
     }
-    @include f.media("lg") {
+    @include f.media('lg') {
       font-size: f.vw(1366, 60);
       margin-top: 26px;
       line-height: f.lh(60, 77);
       white-space: nowrap;
     }
-    @include f.media("xl") {
+    @include f.media('xl') {
       font-size: f.rem(60);
     }
   }
@@ -39,17 +39,17 @@
     letter-spacing: f.ls(40);
     line-height: f.lh(14, 22);
 
-    @include f.media("s") {
+    @include f.media('s') {
       margin-left: 30px;
       margin-top: 30px;
     }
-    @include f.media("lg") {
+    @include f.media('lg') {
       display: flex;
       flex-flow: row nowrap;
       margin-left: 0;
       margin-top: f.vw(1366, 76);
     }
-    @include f.media("xl") {
+    @include f.media('xl') {
       margin-top: 76px;
     }
     &-label {
@@ -61,11 +61,11 @@
     &-desc {
       word-break: normal;
       margin-top: f.rem(2);
-      @include f.media("lg") {
+      @include f.media('lg') {
         margin-left: f.vw(1366, 30);
         margin-top: 0;
       }
-      @include f.media("xl") {
+      @include f.media('xl') {
         margin-left: 30px;
       }
     }
@@ -73,13 +73,13 @@
 }
 .contact {
   padding-top: f.vw(375, 102);
-  @include f.media("s") {
+  @include f.media('s') {
     padding-top: 102px;
   }
-  @include f.media("lg") {
+  @include f.media('lg') {
     padding-top: f.vw(1366, 200);
   }
-  @include f.media("xl") {
+  @include f.media('xl') {
     padding-top: 200px;
   }
 }
