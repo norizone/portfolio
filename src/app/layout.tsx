@@ -6,7 +6,7 @@ import { PrimaryHeader } from '@/components/layouts/header/PrimaryHeader'
 import { ScrollDown } from '@/components/layouts/decoration/ScrollDown'
 import { ArtWork } from '@/artWork/ArtWork'
 import { SideLinks } from '@/components/layouts/sideLinks/SideLinks'
-import AppProvider from '@/provider/RecoilProvider'
+import { Providers } from '@/provider/Providers'
 
 const montserrat = Montserrat({
   weight: ['300', '500', '700'],
@@ -36,10 +36,10 @@ export default function RootLayout({
       <body>
         <PrimaryHeader />
         <ScrollDown />
-        <AppProvider>
+        <Providers>
           <ArtWork />
           {children}
-        </AppProvider>
+        </Providers>
         <SideLinks />
       </body>
     </html>

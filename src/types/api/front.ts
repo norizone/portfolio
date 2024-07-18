@@ -50,7 +50,8 @@ export type DetailWorkRes = {
   nextContents: NextWork | null
 }
 
-export type WorkItemRes = Pick<Work, 'archiveImg' | 'titleEn' | 'id'> & {
+export type WorkItemRes = Pick<Work, 'archiveImg' | 'titleEn'> & {
+  id: string | number
   useTools: WorkTool[]
 }
 
