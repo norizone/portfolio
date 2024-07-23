@@ -8,5 +8,4 @@ export const SetActive = () => {
   useEffect(() => {
     setActiveWork(0)
   }, [])
-  return <></>
 }

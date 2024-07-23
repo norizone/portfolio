@@ -7,6 +7,7 @@ import { ScrollDown } from '@/components/layouts/decoration/ScrollDown'
 import { ArtWork } from '@/artWork/ArtWork'
 import { SideLinks } from '@/components/layouts/sideLinks/SideLinks'
 import { Providers } from '@/provider/Providers'
+import { ReactQueryDevtools } from '@tanstack/react-query-devtools'
 
 const montserrat = Montserrat({
   weight: ['300', '500', '700'],
@@ -39,6 +40,7 @@ export default function RootLayout({
         <Providers>
           <ArtWork />
           {children}
+          <ReactQueryDevtools />
         </Providers>
         <SideLinks />
       </body>

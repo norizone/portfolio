@@ -13,7 +13,7 @@ import { Indicators } from '../indicators/Indicators'
 import styles from './IndexPage.module.scss'
 import { activeWorkState, composeWorksList } from '@/stores/worksStates'
 import { WorkListRes } from '@/types/api/front'
-import { useGetWorkList } from '@/hooks/api/front.hooks'
+import { useGetWorkList, useMutateWorkList } from '@/hooks/api/front.hooks'
 import { useIntersectionObserver } from '../../hooks/useIntersectionObserver'
 import { useAtom, useAtomValue } from 'jotai'
 
@@ -25,39 +25,50 @@ type Props = {
 
 export const IndexPage = (props: Props) => {
   const { SSRData, pageSize, defaultPage } = props
+  const { totalPages, items } = SSRData
   const [page, setPage] = useState(defaultPage)
-  const viewMoreRef = useRef<HTMLDivElement | null>(null)
+  const viewMoreRef = useRef<HTMLButtonElement | null>(null)
   const [works, setWorks] = useAtom(composeWorksList)
   const activeIndex = useAtomValue(activeWorkState)
   const activeWork = useRef<number>(activeIndex)
 
-  const {
-    data: dataWorkList,
-    isPending: isLoadingWorkList,
-    isError: isErrorWorkList,
-  } = useGetWorkList({ pageSize, page }, SSRData)
+  useEffect(() => {
+    setWorks([...works, ...items])
+  }, [items])
 
-  const onChangePage = () => {
-    if (!dataWorkList) return
-    setPage((prevCount) =>
-      prevCount < dataWorkList?.totalPages
-        ? prevCount + 1
-        : dataWorkList?.totalPages
+  const { mutate: mutateWorkList, isPending: isLoadingWorkList } =
+    useMutateWorkList()
+
+  const handleChangePage = (page: number) => {
+    mutateWorkList(
+      {
+        page,
+        pageSize,
+      },
+      {
+        onSuccess: (res) => {
+          const currentIds = new Set(works.map((work) => work.id))
+          const newWorks = res.items.filter((item) => !currentIds.has(item.id))
+          setWorks((prev) => {
+            return [...prev, ...newWorks]
+          })
+        },
+      }
     )
   }
 
-  useMemo(() => {
-    if (!dataWorkList) return
-    const newIds = new Set(dataWorkList.items.map((item) => item.id))
-    const filteredWorks = works.filter((work) => !newIds.has(work.id))
-    const newWorkList = [...filteredWorks, ...dataWorkList.items]
-    setWorks(newWorkList)
-  }, [dataWorkList])
+  const onChangePage = () => {
+    if (page >= totalPages) return
+    const newValue = page + 1
+    setPage(newValue)
+    handleChangePage(newValue)
+  }
 
   const { handleObserve } = useIntersectionObserver({
-    totalPages: dataWorkList?.totalPages ?? 0,
+    totalPages,
     onChangePage,
     page,
+    isLoading: isLoadingWorkList,
   })
 
   useLayoutEffect(() => {
@@ -76,12 +87,14 @@ export const IndexPage = (props: Props) => {
             isScrollTarget={activeWork.current === index ? true : false}
           />
         ))}
-        <ViewMore
-          isLoading={isLoadingWorkList}
-          onChangePage={onChangePage}
-          ref={viewMoreRef}
-          btnHidden={page === Number(dataWorkList?.totalPages)}
-        />
+        {works.length > 1 && (
+          <ViewMore
+            isLoading={isLoadingWorkList}
+            onChangePage={onChangePage}
+            ref={viewMoreRef}
+            btnHidden={page >= totalPages}
+          />
+        )}
       </div>
       {works.length > 1 && <Indicators works={works} />}
     </>

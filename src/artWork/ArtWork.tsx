@@ -12,7 +12,7 @@ export const ArtWork = () => {
   const router = usePathname()?.replace('/', '')
   const path = !router ? 'index' : router
   const [loadedImage, setLoadedImage] = useAtom(loadedImagesState)
-  let loadedShapeCount: Array<number> = []
+  let loadedShapeCount: number[] = []
 
   useEffect(() => {
     setGL(new ArtGL({ canvas: canvasRef.current }))

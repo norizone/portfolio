@@ -3,12 +3,9 @@ import type { Metadata } from 'next'
 
 import './login.scss'
 import { BackToTop } from '@/components/elements/btn/backToTop/BackToTop'
-import { PrimaryFooter } from '@/components/layouts/footer/PrimaryFooter'
-import { NumberingHeadLine } from '@/components/elements/headline/numberingHeadline/NumberingHeadline'
 import MotionWrap from '@/components/layouts/wrap/MotionWrap'
-import { SetActive } from '@/features/profile/hooks/SetActive'
+// import { SetActive } from '@/features/profile/hooks/SetActive'
 import { LoginForm } from '@/features/login/components/loginForm/LoginForm'
-import { PrimaryHeadline } from '@/components/elements/headline/primaryHeadline/PrimaryHeadline'
 
 export const metadata: Metadata = {
   title: 'login',
@@ -17,7 +14,7 @@ export const metadata: Metadata = {
 const Profile = () => {
   return (
     <MotionWrap>
-      <SetActive />
+      {/* <SetActive /> */}
       <div className={clsx('l-wrap', '-secondary')}>
         <BackToTop />
         <section className="login">

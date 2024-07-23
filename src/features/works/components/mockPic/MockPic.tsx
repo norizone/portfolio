@@ -148,7 +148,7 @@ export const MockPic: FC<Props> = (props) => {
               alt=""
               priority={device === 'desktop'}
               loading={device === 'desktop' ? 'eager' : 'lazy'}
-              onLoadingComplete={onAutoScroll}
+              onLoad={onAutoScroll}
             />
           </picture>
         </div>

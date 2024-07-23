@@ -3,8 +3,6 @@ import Image from 'next/image'
 import { useLayoutEffect, useRef, type FC, useEffect } from 'react'
 import Link from 'next/link'
 import clsx from 'clsx'
-import { useRecoilState } from 'recoil'
-
 import styles from './MainContents.module.scss'
 import { activeWorkState, loadedImagesState } from '@/stores/worksStates'
 import { useScrollToTarget } from '../../hooks/useScrollToTarget'

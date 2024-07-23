@@ -37,7 +37,6 @@ const Profile = () => {
   ]
   return (
     <MotionWrap>
-      <SetActive />
       <div className={clsx('l-wrap', '-secondary')}>
         <BackToTop />
         <section className="contents">

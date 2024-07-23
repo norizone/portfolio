@@ -21,7 +21,7 @@ export const metadata: Metadata = {
   },
 }
 
-const PAGE_SIZE = 5
+const PAGE_SIZE = 1
 const DEFAULT_PAGE = 1
 
 const getWorkList = async (): Promise<WorkListRes> => {

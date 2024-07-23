@@ -17,6 +17,7 @@
   display: flex;
   flex-flow: row nowrap;
   align-items: center;
+  cursor: pointer;
   @include f.media('s') {
     font-size: f.rem(28);
   }
@@ -26,6 +27,9 @@
   @include f.media('xl') {
     font-size: f.rem(40);
     padding-left: f.rem(110);
+  }
+  &.-loading {
+    pointer-events: none;
   }
 }
 .icon {

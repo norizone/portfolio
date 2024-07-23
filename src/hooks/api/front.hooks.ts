@@ -1,4 +1,9 @@
-import { useQueryClient, useMutation, useQuery, keepPreviousData } from '@tanstack/react-query'
+import {
+  useQueryClient,
+  useMutation,
+  useQuery,
+  keepPreviousData,
+} from '@tanstack/react-query'
 import { Work } from '@prisma/client'
 import { axiosClient } from '@/utils/axios'
 import { workKeys } from './queryKeys'
@@ -36,7 +41,16 @@ export const useGetWorkList = (ListBody: ListBody, SSRData?: WorkListRes) => {
       return res.data
     },
     initialData: SSRData,
-    placeholderData:keepPreviousData
+    placeholderData: keepPreviousData,
+  })
+}
+
+export const useMutateWorkList = () => {
+  return useMutation({
+    mutationFn: async (ListBody: ListBody): Promise<WorkListRes> => {
+      const res = await axiosClient.post(workApiUrl.list(), ListBody)
+      return res.data
+    },
   })
 }
 
