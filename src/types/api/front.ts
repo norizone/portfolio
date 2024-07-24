@@ -74,3 +74,12 @@ export type EditUserBody = {
   email: string
   permission: number
 }
+
+/**
+ * contact
+ */
+export type ContactBody = {
+  name: string
+  email: string
+  message: string
+}

@@ -11,3 +11,7 @@ export const authApiUrl = {
   login: () => `${authApiUrl.default}/login`,
   logout: () => `${authApiUrl.default}/logout`,
 }
+
+export const contactApiUrl = {
+  default: `${process.env.NEXT_PUBLIC_SEND_MAIL_URL}`,
+}

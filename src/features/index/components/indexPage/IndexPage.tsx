@@ -1,12 +1,5 @@
 'use client'
-import {
-  Fragment,
-  useEffect,
-  useLayoutEffect,
-  useMemo,
-  useRef,
-  useState,
-} from 'react'
+import { useEffect, useLayoutEffect, useRef, useState } from 'react'
 import { MainContents } from '@/features/index/components/mainContents/MainContents'
 import { ViewMore } from '../viewMore/ViewMore'
 import { Indicators } from '../indicators/Indicators'

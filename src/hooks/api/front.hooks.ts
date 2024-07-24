@@ -7,8 +7,14 @@ import {
 import { Work } from '@prisma/client'
 import { axiosClient } from '@/utils/axios'
 import { workKeys } from './queryKeys'
-import { LoginBody, AuthData, ListBody, WorkListRes } from '@/types/api/front'
-import { workApiUrl } from '@/utils/apiUrl'
+import {
+  LoginBody,
+  AuthData,
+  ListBody,
+  WorkListRes,
+  ContactBody,
+} from '@/types/api/front'
+import { contactApiUrl, workApiUrl } from '@/utils/apiUrl'
 
 /*
   login
@@ -62,5 +68,17 @@ export const useGetWork = (id: number, SSRData?: Work) => {
       return res.data
     },
     initialData: SSRData,
+  })
+}
+
+/**
+ * contact
+ */
+export const useMutateContact = () => {
+  return useMutation({
+    mutationFn: async (sendData: ContactBody) => {
+      const res = await axiosClient.post(contactApiUrl.default, sendData)
+      return res.data
+    },
   })
 }

@@ -1,6 +1,6 @@
 'use client'
 import clsx from 'clsx'
-import { forwardRef, RefObject, useLayoutEffect, useRef } from 'react'
+import { forwardRef } from 'react'
 import styles from './ViewMore.module.scss'
 import { LoadingIcon } from '@/components/elements/icon/loadingIcon/LoadingIcon'
 
