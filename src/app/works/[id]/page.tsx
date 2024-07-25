@@ -10,7 +10,7 @@ import { cookies } from 'next/headers'
 import axios from 'axios'
 import { baseURL, workApiUrl } from '@/utils/apiUrl'
 import { DetailWorkRes } from '@/types/api/front'
-import { SetCurrent } from '@/features/works/components/setCurrent/setCurrent'
+import { SetCurrent } from '@/features/works/components/setCurrent/SetCurrent'
 
 type Props = {
   params: { id: string }

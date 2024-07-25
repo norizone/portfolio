@@ -3,6 +3,7 @@
 import { QueryClient, QueryClientProvider } from '@tanstack/react-query'
 import { ReactQueryStreamedHydration } from '@tanstack/react-query-next-experimental'
 import { useState } from 'react'
+import { AuthGuard } from './AuthGard'
 
 export function QueryProviders(props: { children: React.ReactNode }) {
   const [queryClient] = useState(
@@ -19,9 +20,11 @@ export function QueryProviders(props: { children: React.ReactNode }) {
 
   return (
     <QueryClientProvider client={queryClient}>
-      <ReactQueryStreamedHydration>
-        {props.children}
-      </ReactQueryStreamedHydration>
+      <AuthGuard>
+        <ReactQueryStreamedHydration>
+          {props.children}
+        </ReactQueryStreamedHydration>
+      </AuthGuard>
     </QueryClientProvider>
   )
 }

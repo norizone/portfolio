@@ -1,3 +1,5 @@
+import { loadedPage } from '@/stores/worksStates'
+import { useAtomValue } from 'jotai'
 import { RefObject, useCallback, useEffect, useRef } from 'react'
 
 const observerOptions = {
@@ -9,22 +11,20 @@ const observerOptions = {
 export const useIntersectionObserver = ({
   totalPages,
   onChangePage,
-  page,
   isLoading,
 }: {
   totalPages: number
   onChangePage: () => void
-  page: number
   isLoading: boolean
 }) => {
+  const currentPage = useAtomValue(loadedPage)
   const observerRef = useRef<IntersectionObserver | null>(null)
   const timeoutRef = useRef<NodeJS.Timeout | null>(null)
 
-  console.log(page, totalPages)
   const handleIntersection = useCallback(
     (entries: IntersectionObserverEntry[], observer: IntersectionObserver) => {
       entries.forEach((entry) => {
-        if (isLoading || page === totalPages) return
+        if (isLoading || currentPage >= totalPages) return
         if (entry.isIntersecting) {
           if (timeoutRef.current) {
             clearTimeout(timeoutRef.current)
@@ -32,8 +32,7 @@ export const useIntersectionObserver = ({
           timeoutRef.current = setTimeout(() => {
             observer.unobserve(entry.target)
             onChangePage()
-            console.log('in')
-          }, 1000) // 遅延時間を調整する
+          }, 1000)
         } else {
           if (timeoutRef.current) {
             clearTimeout(timeoutRef.current)
@@ -42,7 +41,7 @@ export const useIntersectionObserver = ({
         }
       })
     },
-    [onChangePage, page, totalPages, isLoading]
+    [onChangePage, currentPage, totalPages, isLoading]
   )
 
   const handleObserve = useCallback(
@@ -58,11 +57,11 @@ export const useIntersectionObserver = ({
         observer.observe(targetRef.current)
       }
 
-      if (page >= totalPages || isLoading) {
+      if (currentPage >= totalPages || isLoading) {
         observer.disconnect()
       }
     },
-    [handleIntersection, page, totalPages, isLoading]
+    [handleIntersection, currentPage, totalPages, isLoading]
   )
 
   useEffect(() => {

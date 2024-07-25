@@ -5,6 +5,7 @@ import { cookies } from 'next/headers'
 import axios from 'axios'
 import { baseURL, workApiUrl } from '@/utils/apiUrl'
 import { WorkListRes } from '@/types/api/front'
+import { DEFAULT_PAGE, DEFAULT_WORK, PAGE_SIZE } from '@/utils/const'
 
 export const metadata: Metadata = {
   robots: {
@@ -20,9 +21,6 @@ export const metadata: Metadata = {
     },
   },
 }
-
-const PAGE_SIZE = 1
-const DEFAULT_PAGE = 1
 
 const getWorkList = async (): Promise<WorkListRes> => {
   const cookie = cookies()
@@ -57,7 +55,6 @@ export default async function Home() {
       <IndexPage
         SSRData={data}
         pageSize={PAGE_SIZE}
-        defaultPage={DEFAULT_PAGE}
       />
     </MotionWrap>
   )

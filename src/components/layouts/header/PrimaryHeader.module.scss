@@ -35,14 +35,20 @@
     z-index: -1;
   }
   &__links {
-    display: flex;
-    flex-flow: column nowrap;
+    display: grid;
+    grid-template-rows: 1fr 1fr;
     text-align: right;
     > a {
       transition: opacity 0.1s linear;
     }
+    > button {
+      transition: opacity 0.1s linear;
+    }
     @media (hover: hover) {
       > a:hover {
+        opacity: 0.6;
+      }
+      > button:hover {
         opacity: 0.6;
       }
     }

@@ -1,12 +1,22 @@
+'use client'
 import Link from 'next/link'
 import styles from './PrimaryHeader.module.scss'
+import { useAtomValue } from 'jotai'
+import { userId } from '@/stores/worksStates'
+import { useMutationLogout } from '@/hooks/api/front.hooks'
 
-type Props = {
-  isLogin?: boolean
-}
+export const PrimaryHeader = () => {
+  const permission = useAtomValue(userId)
+  const { mutate: mutateLogout } = useMutationLogout()
 
-export const PrimaryHeader = (props: Props) => {
-  const { isLogin } = props
+  const onLogout = () => {
+    mutateLogout(undefined, {
+      onSuccess: () => {
+
+      }
+    })
+  }
+
   return (
     <header className={styles.header}>
       <Link className="upper" href={'/'} prefetch={true}>
@@ -18,14 +28,14 @@ export const PrimaryHeader = (props: Props) => {
         <Link className="upper" href={'/profile'} prefetch={true}>
           Profile
         </Link>
-        {isLogin ? (
-          <button className="upper" type="button">
-            Logout
-          </button>
-        ) : (
-          <Link className="upper" href={'/login'}>
-            Login
+        {permission === null || permission === 0 ? (
+          <Link className="upper" href={'/login'} >
+            Log in
           </Link>
+        ) : (
+          <button className="upper" type="button" onClick={onLogout}>
+            Log out
+          </button>
         )}
       </div>
     </header>

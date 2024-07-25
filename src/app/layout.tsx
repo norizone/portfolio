@@ -35,14 +35,14 @@ export default function RootLayout({
   return (
     <html lang="ja" className={montserrat.variable}>
       <body>
-        <PrimaryHeader />
-        <ScrollDown />
         <Providers>
+          <PrimaryHeader />
+          <ScrollDown />
           <ArtWork />
           {children}
           <ReactQueryDevtools />
+          <SideLinks />
         </Providers>
-        <SideLinks />
       </body>
     </html>
   )

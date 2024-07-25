@@ -6,7 +6,7 @@ import {
 } from '@tanstack/react-query'
 import { Work } from '@prisma/client'
 import { axiosClient } from '@/utils/axios'
-import { workKeys } from './queryKeys'
+import { authKeys, workKeys } from './queryKeys'
 import {
   AuthData,
   ListBody,
@@ -15,10 +15,24 @@ import {
   LoginBody,
 } from '@/types/api/front'
 import { contactApiUrl, workApiUrl } from '@/utils/apiUrl'
+import { getAuth } from './auth'
 
 /*
-  login
+  auth
 */
+
+export const useGetAuth = (
+  enabled?: boolean,
+  refetchOnWindowFocus?: boolean
+) => {
+  return useQuery({
+    queryKey: authKeys.deflate,
+    queryFn: () => getAuth(),
+    enabled,
+    refetchOnWindowFocus,
+  })
+}
+
 export const useMutateLogin = () => {
   const queryClient = useQueryClient()
   return useMutation({
