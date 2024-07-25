@@ -1,4 +1,4 @@
-import * as yup from 'yup'
+import { z } from 'zod'
 
 const ENTER_TEXT = 'を入力してください'
 const SELECT_TEXT = 'を選択してください'
@@ -17,22 +17,23 @@ const requiredMessage = (title: string, type: 'input' | 'select' = 'input') => {
 /**
  * loginフォーム
  */
-export const loginSchema = yup.object({
-  email: yup
+export const loginSchema = z.object({
+  email: z
     .string()
-    .email('無効なメールアドレスです')
-    .required(requiredMessage('メールアドレス')),
-  password: yup.string().required(requiredMessage('パスワード')),
+    .trim()
+    .min(1, requiredMessage('メールアドレス'))
+    .email('無効なメールアドレスです'),
+  password: z.string().trim().min(1, requiredMessage('パスワード')),
 })
 
 /**
  * contact
  */
-export const contactSchema = yup.object({
-  name: yup.string().required(requiredMessage('name')),
-  email: yup
+export const contactSchema = z.object({
+  name: z.string().trim().min(1, requiredMessage('お名前')),
+  email: z
     .string()
     .email('無効なメールアドレスです')
-    .required(requiredMessage('メールアドレス')),
-  message: yup.string().required(requiredMessage('お問い合わせ内容')),
+    .min(1, requiredMessage('メールアドレス')),
+  message: z.string().min(1, requiredMessage('お問い合わせ内容')),
 })

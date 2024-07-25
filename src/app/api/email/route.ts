@@ -1,6 +1,6 @@
 import { NextResponse } from 'next/server'
 
-export async function GET(req: Request) {
+export async function POST(req: Request) {
   if (req.headers.get('x-requested-with') !== 'fetch') return
 
   const { searchParams } = new URL(req.url, 'http://localhost:3000/')

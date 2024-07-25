@@ -1,17 +1,15 @@
-import { FC } from 'react'
-
 import { PrimaryLink } from '@/components/elements/link/primaryLink/PrimaryLink'
 import styles from './ArticleContents.module.scss'
 import { MockPic } from '@/features/works/components/mockPic/MockPic'
-import { SetActive } from '../../../../../features/works/hooks/SetActive'
 import { PrimaryHeadline } from '@/components/elements/headline/primaryHeadline/PrimaryHeadline'
 import { DetailWork } from '@/types/api/front'
+import { useCurrentWork } from '@/hooks/useCurrentWork'
 
 type Props = {
   item: DetailWork
 }
 
-export const ArticleContent: FC<Props> = (props) => {
+export const ArticleContent = (props: Props) => {
   const { item } = props
   const formatDate = (date: Date) => {
     const y = date.getFullYear()
@@ -25,9 +23,9 @@ export const ArticleContent: FC<Props> = (props) => {
 
   const topImageIndex = item.singleImgMain ? 0 : 1
   const mobilePics = [...pics.slice(topImageIndex + 1)]
+
   return (
     <section className={styles.article}>
-      <SetActive pageId={item.id} />
       <div className={styles.article__headline}>
         <PrimaryHeadline tag={'h1'} text={item.titleEn} />
       </div>

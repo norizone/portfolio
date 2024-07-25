@@ -1,4 +1,4 @@
-'use clinet'
+'use client'
 import { useEffect, useState } from 'react'
 
 export const useWindowSize = (): number => {

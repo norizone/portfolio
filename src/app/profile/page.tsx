@@ -7,7 +7,6 @@ import { PrimaryFooter } from '@/components/layouts/footer/PrimaryFooter'
 import { NumberingHeadLine } from '@/components/elements/headline/numberingHeadline/NumberingHeadline'
 import { ContactForm } from '@/features/profile/components/contactForm/ContactForm'
 import MotionWrap from '@/components/layouts/wrap/MotionWrap'
-import { SetActive } from '@/features/profile/hooks/SetActive'
 
 export const metadata: Metadata = {
   title: 'profile',
@@ -15,17 +14,18 @@ export const metadata: Metadata = {
 
 const Profile = () => {
   const skills = [
-    'JavaScript',
-    'TypeScript',
     'React',
     'Next.js',
+    'Nest.js',
     'Vue',
     'Nuxt.js',
     'Astro',
-    'scss',
     'WebAudio(tone.js)',
     'WebGL(Three.js)',
     'GSAP',
+    'JavaScript',
+    'TypeScript',
+    'scss',
     'vite',
     'webpack',
     'PHP',

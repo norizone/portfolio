@@ -1,4 +1,5 @@
 import { Work, User, Tool } from '@prisma/client'
+import { ContactSchema, LoginSchema } from '../form'
 
 /**
  * General
@@ -19,10 +20,7 @@ export type AuthData = {
 /**
  * login
  */
-export type LoginBody = {
-  email: string
-  password: string
-}
+export type LoginBody = LoginSchema
 
 /**
  * Work
@@ -78,8 +76,4 @@ export type EditUserBody = {
 /**
  * contact
  */
-export type ContactBody = {
-  name: string
-  email: string
-  message: string
-}
+export type ContactBody = ContactSchema

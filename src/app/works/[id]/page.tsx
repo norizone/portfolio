@@ -1,7 +1,6 @@
 import { clsx } from 'clsx'
 import { notFound } from 'next/navigation'
 import type { Metadata } from 'next'
-
 import { BackToTop } from '@/components/elements/btn/backToTop/BackToTop'
 import { PrimaryFooter } from '@/components/layouts/footer/PrimaryFooter'
 import { ArticleContent } from './_components/articleContents/ArticleContents'
@@ -11,6 +10,7 @@ import { cookies } from 'next/headers'
 import axios from 'axios'
 import { baseURL, workApiUrl } from '@/utils/apiUrl'
 import { DetailWorkRes } from '@/types/api/front'
+import { SetCurrent } from '@/features/works/components/setCurrent/setCurrent'
 
 type Props = {
   params: { id: string }
@@ -59,6 +59,7 @@ const WorksPage = async ({ params }: { params: { id: string } }) => {
   const { item, nextContents } = data
   return (
     <MotionWrap>
+      <SetCurrent pageId={item.id} />
       <div className={clsx('l-wrap', '-primary')}>
         <BackToTop />
         {item && <ArticleContent item={item} />}

@@ -1,51 +1,35 @@
 'use client'
 import { useForm } from 'react-hook-form'
-import { yupResolver } from '@hookform/resolvers/yup'
 import { loginSchema } from '@/utils/validations'
+import { LoginSchema } from '@/types/form'
 import { PrimaryInput } from '@/components/elements/input/primaryInput/PrimaryInput'
-import { LoginBody } from '@/types/api/front'
-import { useMutateLogin } from '@/hooks/api/front.hooks'
-import { useState } from 'react'
-import { useRouter } from 'next/navigation'
 import { PasswordInput } from '@/components/elements/input/passwordInput/PasswordInput'
 import { SubmitBtn } from '@/components/elements/btn/submitBtn/SubmitBtn'
 import { FormLabel } from '@/components/elements/texts/formLabel/FormLabel'
-// import { routers } from '@/routers/routers'
-// import { ErrorMessageBox } from '@/components/elements/textBlock/ErrorMessageBox'
+import { zodResolver } from '@hookform/resolvers/zod'
+import styles from './LoginForm.module.scss'
+import clsx from 'clsx'
+import { useSubmitLogin } from '../../hooks/useSubmitLogin'
 
 export const LoginForm = () => {
-  const router = useRouter()
-  const [errorMessage, setErrorMessage] = useState<string>('')
+  const {
+    onSubmit: onSubmitLogin,
+    errorMessage,
+    isLoading,
+    isError,
+  } = useSubmitLogin()
   const {
     register,
     handleSubmit,
     formState: { errors },
-  } = useForm<LoginBody>({
+  } = useForm<LoginSchema>({
     mode: 'onBlur',
-    resolver: yupResolver(loginSchema),
+    resolver: zodResolver(loginSchema),
   })
 
-  const {
-    mutate: mutateLogin,
-    isPending: isLoginPending,
-    isError: isLoginError,
-  } = useMutateLogin()
-
-  const onSubmit = (data: LoginBody) => {
-    mutateLogin(data, {
-      onSuccess: () => {
-        router.replace('/')
-      },
-      onError: (res) => {
-        console.log(res)
-        setErrorMessage(res?.message)
-      },
-    })
-  }
-
   return (
-    <form onSubmit={handleSubmit(onSubmit)} noValidate>
-      <div className="mt-[2em] p-[1em] text-left flex flex-col gap-[1.2em]">
+    <form onSubmit={handleSubmit(onSubmitLogin)} noValidate>
+      <div>
         <FormLabel label="email" required errorMessage={errors?.email?.message}>
           <PrimaryInput
             type="email"
@@ -57,22 +41,21 @@ export const LoginForm = () => {
         <FormLabel
           label="password"
           required
-          errorMessage={errors?.email?.message}
+          errorMessage={errors?.password?.message}
         >
           <PasswordInput
             autocomplete="current-password"
             {...register('password')}
           />
         </FormLabel>
-
-        <SubmitBtn text="Login" />
-
-        {/* 
-      {(isLoginError || isLSignUpError) && (
-        <ErrorMessageBox customClassName="mt-[1em]">
-          {errorMessage}
-        </ErrorMessageBox>
-      )} */}
+        <div className={styles.submitWrap}>
+          {isError && (
+            <p className={clsx(styles.submitError, 'flex-center')}>
+              {errorMessage}
+            </p>
+          )}
+          <SubmitBtn isLoading={isLoading} text="Login" />
+        </div>
       </div>
     </form>
   )

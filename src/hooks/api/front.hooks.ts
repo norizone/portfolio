@@ -8,11 +8,11 @@ import { Work } from '@prisma/client'
 import { axiosClient } from '@/utils/axios'
 import { workKeys } from './queryKeys'
 import {
-  LoginBody,
   AuthData,
   ListBody,
   WorkListRes,
   ContactBody,
+  LoginBody,
 } from '@/types/api/front'
 import { contactApiUrl, workApiUrl } from '@/utils/apiUrl'
 
@@ -20,18 +20,26 @@ import { contactApiUrl, workApiUrl } from '@/utils/apiUrl'
   login
 */
 export const useMutateLogin = () => {
+  const queryClient = useQueryClient()
   return useMutation({
     mutationFn: async (data: LoginBody): Promise<AuthData> => {
       const res = await axiosClient.post(`/auth/login`, data)
       return res.data
     },
+    onSuccess: () => {
+      queryClient.clear()
+    },
   })
 }
 
 export const useMutationLogout = () => {
+  const queryClient = useQueryClient()
   return useMutation({
     mutationFn: async (): Promise<void> => {
       const res = await axiosClient.post(`/auth/logout`, undefined)
+    },
+    onSuccess: () => {
+      queryClient.clear()
     },
   })
 }
