@@ -100,6 +100,7 @@ export const MainContents: FC<Props> = (props) => {
               loading="eager"
               alt=""
               ref={imageRef}
+              onLoad={setLoadedImage}
             />
           </Link>
         </div>

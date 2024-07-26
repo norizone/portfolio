@@ -11,3 +11,5 @@ export const loadedPage = atom<number>(DEFAULT_PAGE)
 export const loadedImagesState = atom<Array<number>>([])
 
 export const userId = atom<number | null>(null)
+
+export const worksTotalCount = atom<number>(0)

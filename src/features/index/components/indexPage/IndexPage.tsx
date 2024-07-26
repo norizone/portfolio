@@ -24,7 +24,7 @@ export const IndexPage = (props: Props) => {
   const currentPage = useAtomValue(loadedPage)
   const activeWork = useRef<number>(activeIndex)
 
-  useMemo(() => {
+  useEffect(() => {
     if (works.length > 1) return
     setWorks([...works, ...items])
     // eslint-disable-next-line react-hooks/exhaustive-deps

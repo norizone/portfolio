@@ -5,7 +5,7 @@ import { cookies } from 'next/headers'
 import axios from 'axios'
 import { baseURL, workApiUrl } from '@/utils/apiUrl'
 import { WorkListRes } from '@/types/api/front'
-import { DEFAULT_PAGE, DEFAULT_WORK, PAGE_SIZE } from '@/utils/const'
+import { DEFAULT_PAGE, PAGE_SIZE } from '@/utils/const'
 
 export const metadata: Metadata = {
   robots: {
