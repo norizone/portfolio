@@ -3,19 +3,12 @@ import Link from 'next/link'
 import styles from './PrimaryHeader.module.scss'
 import { useAtomValue } from 'jotai'
 import { userId } from '@/stores/worksStates'
-import { useMutationLogout } from '@/hooks/api/front.hooks'
+import { useLogout } from '@/hooks/useLogout'
 
 export const PrimaryHeader = () => {
   const permission = useAtomValue(userId)
-  const { mutate: mutateLogout } = useMutationLogout()
+  const { onLogout } = useLogout()
 
-  const onLogout = () => {
-    mutateLogout(undefined, {
-      onSuccess: () => {
-
-      }
-    })
-  }
 
   return (
     <header className={styles.header}>

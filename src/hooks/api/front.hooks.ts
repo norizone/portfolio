@@ -46,7 +46,7 @@ export const useMutateLogin = () => {
   })
 }
 
-export const useMutationLogout = () => {
+export const useMutateLLogout = () => {
   const queryClient = useQueryClient()
   return useMutation({
     mutationFn: async (): Promise<void> => {

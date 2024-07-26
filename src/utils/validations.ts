@@ -33,7 +33,8 @@ export const contactSchema = z.object({
   name: z.string().trim().min(1, requiredMessage('お名前')),
   email: z
     .string()
+    .trim()
     .email('無効なメールアドレスです')
     .min(1, requiredMessage('メールアドレス')),
-  message: z.string().min(1, requiredMessage('お問い合わせ内容')),
+  message: z.string().trim().min(1, requiredMessage('お問い合わせ内容')),
 })

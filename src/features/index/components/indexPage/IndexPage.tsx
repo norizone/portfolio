@@ -1,5 +1,5 @@
 'use client'
-import { useEffect, useLayoutEffect, useRef } from 'react'
+import { useEffect, useLayoutEffect, useMemo, useRef } from 'react'
 import { MainContents } from '@/features/index/components/mainContents/MainContents'
 import { ViewMore } from '../viewMore/ViewMore'
 import { Indicators } from '../indicators/Indicators'
@@ -24,6 +24,12 @@ export const IndexPage = (props: Props) => {
   const currentPage = useAtomValue(loadedPage)
   const activeWork = useRef<number>(activeIndex)
 
+  useMemo(() => {
+    if (works.length > 1) return
+    setWorks([...works, ...items])
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [items])
+
   const { onChangePage, isLoadingWorkList } = useChangePage({
     pageSize,
     totalPages,
@@ -34,12 +40,6 @@ export const IndexPage = (props: Props) => {
     onChangePage,
     isLoading: isLoadingWorkList,
   })
-
-  useEffect(() => {
-    if (works.length > 1) return
-    setWorks([...works, ...items])
-    // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [items])
 
   useLayoutEffect(() => {
     if (!viewMoreRef || !viewMoreRef.current) return

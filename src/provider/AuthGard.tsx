@@ -1,5 +1,6 @@
 'use client'
-import { useGetAuth, useMutationLogout } from '@/hooks/api/front.hooks'
+import { useGetAuth } from '@/hooks/api/front.hooks'
+import { useLogout } from '@/hooks/useLogout'
 import { routers } from '@/routers/routers'
 import { userId } from '@/stores/worksStates'
 import { useAtom } from 'jotai'
@@ -13,13 +14,14 @@ export const AuthGuard = (props: { children: React.ReactNode }) => {
     pathname !== routers.LOGIN,
     true,
   )
-  const { mutate: logoutMutate } = useMutationLogout();
+  const { onLogout } = useLogout()
 
   useEffect(() => {
     if (!data) return
     if (data.userId !== id) {
       setId(data.userId)
-      // data.userId > 0 && logoutMutate();
+      if (id === null) return;
+      data.userId === 0 && onLogout();
     }
   }, [data])
 

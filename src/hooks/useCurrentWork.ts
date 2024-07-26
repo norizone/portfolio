@@ -1,9 +1,9 @@
 'use client'
-import { useAtom, useAtomValue } from 'jotai'
+import { useAtom, useAtomValue, useSetAtom } from 'jotai'
 import { activeWorkState, composeWorksList } from '@/stores/worksStates'
 
 export const useCurrentWork = () => {
-  const [_, setActiveWork] = useAtom(activeWorkState)
+  const setActiveWork = useSetAtom(activeWorkState)
   const worksList = useAtomValue(composeWorksList)
   const setCurrent = (pageId?: string | number) => {
     if (!pageId) setActiveWork(0)
