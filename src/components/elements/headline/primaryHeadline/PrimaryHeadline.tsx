@@ -1,8 +1,9 @@
 import { FC } from 'react'
 import styles from './PrimaryHeadline.module.scss'
+import clsx from 'clsx'
 
 type Props = {
-  text: string | TrustedHTML
+  text: string
   tag: 'p' | 'h1' | 'h2' | 'h3' | 'h4' | 'h5' | 'h6'
 }
 export const PrimaryHeadline: FC<Props> = (props) => {
@@ -10,8 +11,7 @@ export const PrimaryHeadline: FC<Props> = (props) => {
   const Tag = tag
   return (
     <Tag
-      className={styles.headline}
-      dangerouslySetInnerHTML={{ __html: text }}
-    />
+      className={clsx(styles.headline, 'pre')}
+    >{text}</Tag>
   )
 }

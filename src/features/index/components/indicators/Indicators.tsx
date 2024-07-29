@@ -30,9 +30,8 @@ export const Indicators: FC<Props> = (props) => {
     <div className={styles.indicators}>
       <div className={styles.indicators__inner} ref={indicatorsRef}>
         <p
-          className={clsx(styles.indicators__text, 'upper')}
-          dangerouslySetInnerHTML={{ __html: works[activeWork].titleEn }}
-        ></p>
+          className={clsx(styles.indicators__text, 'upper', 'pre')}
+        >{works[activeWork].titleEn}</p>
         <div className={styles.indicators__clip}>
           {works.map((el, index) => (
             <span

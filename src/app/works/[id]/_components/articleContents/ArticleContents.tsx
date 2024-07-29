@@ -49,7 +49,7 @@ export const ArticleContent = (props: Props) => {
             <br />
           </p>
           {item.comment && (
-            <p dangerouslySetInnerHTML={{ __html: item.comment }}></p>
+            <p className='pre'>{item.comment}</p>
           )}
         </div>
 

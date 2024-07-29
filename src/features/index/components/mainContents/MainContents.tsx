@@ -86,10 +86,9 @@ export const MainContents: FC<Props> = (props) => {
             )}
           >
             <Link
-              className={styles['content__title-link']}
+              className={clsx(styles['content__title-link'], 'pre')}
               href={'works/' + contents.id}
-              dangerouslySetInnerHTML={{ __html: contents.titleEn }}
-            ></Link>
+            >{contents.titleEn}</Link>
           </h1>
           <Link href={'works/' + contents.id} className={styles.content__pic}>
             <Image

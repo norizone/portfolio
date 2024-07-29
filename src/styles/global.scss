@@ -83,6 +83,10 @@ img {
   pointer-events: none !important;
 }
 
+.pre {
+  white-space: pre-wrap;
+}
+
 .flex-center {
   display: flex;
   justify-content: center;
