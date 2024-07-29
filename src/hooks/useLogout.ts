@@ -1,4 +1,4 @@
-import { useRouter, usePathname } from 'next/navigation'
+import { useRouter } from 'next/navigation'
 import { useMutateLLogout } from './api/front.hooks'
 import { useResetWorksList } from './useResetWorkList'
 import { routers } from '@/routers/routers'
@@ -7,7 +7,6 @@ export const useLogout = () => {
   const { mutate: mutateLogout } = useMutateLLogout()
   const { resetWorksList } = useResetWorksList()
   const router = useRouter()
-  const pathName = usePathname()
 
   const onLogout = () => {
     mutateLogout(undefined, {

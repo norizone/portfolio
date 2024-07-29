@@ -5,11 +5,11 @@ import { useForm } from 'react-hook-form'
 import { contactSchema } from '@/utils/validations'
 import { ContactSchema } from '@/types/form'
 import { useSubmitContact } from '../../hooks/useSubmitContact'
-import { SendBtn } from '../sendBtn/SendBtn'
 import { FormLabel } from '@/components/elements/texts/formLabel/FormLabel'
 import { PrimaryInput } from '@/components/elements/input/primaryInput/PrimaryInput'
 import { PrimaryTextarea } from '@/components/elements/input/primaryTextarea/PrimaryTextarea'
 import clsx from 'clsx'
+import { SubmitBtn } from '@/components/elements/btn/submitBtn/SubmitBtn'
 
 export const ContactForm = () => {
   const { onSubmit, errorMessage, isLoading, isError, isSuccess } =
@@ -67,7 +67,11 @@ export const ContactForm = () => {
                 {errorMessage}
               </p>
             )}
-            <SendBtn isLoading={isLoading} />
+            <SubmitBtn
+              text='sending'
+              sendingText='send message'
+              isLoading={isLoading}
+            />
           </div>
         </form>
       )}

@@ -4,7 +4,6 @@ import type { Metadata } from 'next'
 import './login.scss'
 import { BackToTop } from '@/components/elements/btn/backToTop/BackToTop'
 import MotionWrap from '@/components/layouts/wrap/MotionWrap'
-// import { SetActive } from '@/features/profile/hooks/SetActive'
 import { LoginForm } from '@/features/login/components/loginForm/LoginForm'
 
 export const metadata: Metadata = {
@@ -14,7 +13,6 @@ export const metadata: Metadata = {
 const Profile = () => {
   return (
     <MotionWrap>
-      {/* <SetActive /> */}
       <div className={clsx('l-wrap', '-secondary')}>
         <BackToTop />
         <section className="login">

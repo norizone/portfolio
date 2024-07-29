@@ -1,4 +1,5 @@
 'use client'
+import { PrimaryModal } from '@/components/elements/modal/primaryModal/PrimaryModal'
 import { useGetAuth } from '@/hooks/api/front.hooks'
 import { useLogout } from '@/hooks/useLogout'
 import { routers } from '@/routers/routers'
@@ -20,10 +21,12 @@ export const AuthGuard = (props: { children: React.ReactNode }) => {
     if (!data) return
     if (data.userId !== id) {
       setId(data.userId)
-      if (id === null) return;
+      if (id === null || id === 0) return;
+      //TODO: ポップアップでログアウトが切れたお知らせ出す。セッションの有効期限が切れたためログアウトしました。
       data.userId === 0 && onLogout();
     }
   }, [data])
 
-  return <>{props.children}</>
+  return (
+    <>{props.children}</>)
 }

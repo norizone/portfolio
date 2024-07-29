@@ -1,7 +1,7 @@
 export const routers = {
   LOGIN: '/login',
   HOME: '/',
-  WORKS: '/works', //id
-
+  /** /id */
+  WORKS: '/works',
   NOT_FOUND: '/404',
 } as const
