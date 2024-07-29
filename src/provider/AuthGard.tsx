@@ -1,5 +1,5 @@
 'use client'
-import { PrimaryModal } from '@/components/elements/modal/primaryModal/PrimaryModal'
+import { LogoutModal } from '@/components/elements/modal/logoutModal/LogoutModal'
 import { useGetAuth } from '@/hooks/api/front.hooks'
 import { useLogout } from '@/hooks/useLogout'
 import { routers } from '@/routers/routers'
@@ -15,18 +15,23 @@ export const AuthGuard = (props: { children: React.ReactNode }) => {
     pathname !== routers.LOGIN,
     true,
   )
-  const { onLogout } = useLogout()
+  const { onLogout, closeModal, isOpenLogoutModal } = useLogout()
 
   useEffect(() => {
     if (!data) return
     if (data.userId !== id) {
       setId(data.userId)
       if (id === null || id === 0) return;
-      //TODO: ポップアップでログアウトが切れたお知らせ出す。セッションの有効期限が切れたためログアウトしました。
       data.userId === 0 && onLogout();
     }
   }, [data])
 
   return (
-    <>{props.children}</>)
+    <>{props.children}
+      <LogoutModal
+        title={`セッションの有効期限が切れたため\nログアウトしました`}
+        isOpen={isOpenLogoutModal}
+        onClose={closeModal}
+      />
+    </>)
 }

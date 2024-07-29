@@ -4,12 +4,12 @@ import { loginSchema } from '@/utils/validations'
 import { LoginSchema } from '@/types/form'
 import { PrimaryInput } from '@/components/elements/input/primaryInput/PrimaryInput'
 import { PasswordInput } from '@/components/elements/input/passwordInput/PasswordInput'
-import { SubmitBtn } from '@/components/elements/btn/submitBtn/SubmitBtn'
 import { FormLabel } from '@/components/elements/texts/formLabel/FormLabel'
 import { zodResolver } from '@hookform/resolvers/zod'
 import styles from './LoginForm.module.scss'
 import clsx from 'clsx'
 import { useSubmitLogin } from '../../hooks/useSubmitLogin'
+import { SubmitBtn } from '@/components/elements/btn/submitBtn/SubmitBtn'
 
 export const LoginForm = () => {
   const {
