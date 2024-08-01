@@ -1,0 +1,15 @@
+@use '_functions.scss' as f;
+
+.link {
+  font-size: f.rem(16);
+  letter-spacing: f.ls(40);
+  font-family: var(--font-en);
+  font-weight: var(--font-regular);
+  display: inline-flex;
+  flex-flow: row nowrap;
+  justify-content: center;
+  align-items: center;
+  & > span {
+    margin-right: 1em;
+  }
+}

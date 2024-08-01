@@ -1,0 +1,51 @@
+@use '_functions.scss' as f;
+
+.wrap {
+  width: 100%;
+  text-align: center;
+  padding: 40px;
+}
+.title {
+  margin-bottom: 30px;
+}
+
+.close {
+  display: block;
+  position: relative;
+  width: f.vw(375, 16);
+  height: f.vw(375, 16);
+  margin-left: f.vw(375, 10);
+  @include f.media('s') {
+    width: f.rem(16);
+    height: f.rem(16);
+    margin-left: f.rem(10);
+  }
+  @include f.media('lg') {
+    width: f.vw(1366, 20);
+    height: f.vw(1366, 20);
+    margin-left: f.vw(1366, 22);
+  }
+  @include f.media('xxl') {
+    width: f.rem(20);
+    height: f.rem(20);
+    margin-left: f.rem(22);
+  }
+  &::after,
+  &::before {
+    height: 1px;
+    width: 100%;
+    content: '';
+    position: absolute;
+    top: 9px;
+    left: 0;
+    background: var(--color-white);
+    display: block;
+    transform-origin: center center;
+  }
+  &::after {
+    transform: rotate(45deg);
+  }
+  &::before {
+    transform: rotate(-45deg);
+  }
+}

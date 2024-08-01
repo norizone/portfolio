@@ -1,8 +1,11 @@
-import type { Metadata } from "next";
-
-import { ListWorks } from '@/types/works';
-import { IndexPage } from '@/features/index/components/indexPage/IndexPage';
-import MotionWrap from "@/components/layouts/wrap/MotionWrap";
+import type { Metadata } from 'next'
+import { IndexPage } from '@/features/index/components/indexPage/IndexPage'
+import MotionWrap from '@/components/layouts/wrap/MotionWrap'
+import { cookies } from 'next/headers'
+import axios from 'axios'
+import { baseURL, workApiUrl } from '@/utils/apiUrl'
+import { WorkListRes } from '@/types/api/front'
+import { DEFAULT_PAGE, PAGE_SIZE } from '@/utils/const'
 
 export const metadata: Metadata = {
   robots: {
@@ -19,30 +22,40 @@ export const metadata: Metadata = {
   },
 }
 
- const getWorks= async() =>{
-  const uri = process.env.API_URL;
-  const secretKey = process.env.API_KEY;
-  const url = new URL(uri+'');
-  url.searchParams.set("orders", "-publishedAt");
-  url.searchParams.set("fields", "id,title_en,archive_img,use_tools");
-  url.searchParams.set("offset", '0');
-  url.searchParams.set("limit", '5');
-  const response = await fetch(
-    url.href,
-    {headers: { "X-MICROCMS-API-KEY": secretKey+'' },cache: "no-store"}
-    );
-  const data:ListWorks = await response.json();
-  return data
+const getWorkList = async (): Promise<WorkListRes> => {
+  const cookie = cookies()
+    .getAll()
+    .map((cookie) => `${cookie.name}=${cookie.value}`)
+    .join('; ')
+  try {
+    const res = await axios.post(
+      `${baseURL}${workApiUrl.list()}`,
+      {
+        page: DEFAULT_PAGE,
+        pageSize: PAGE_SIZE,
+      },
+      {
+        headers: { cookie },
+      }
+    )
+    return res.data
+  } catch (error) {
+    return {
+      items: [],
+      totalCount: 0,
+      totalPages: 0,
+    }
+  }
 }
 
-const Home = async() => {
-  const data = await getWorks();
-  const {contents,totalCount} = data;
+export default async function Home() {
+  const data = await getWorkList()
   return (
     <MotionWrap>
-      <IndexPage contents={contents} totalCount={totalCount}/>
+      <IndexPage
+        SSRData={data}
+        pageSize={PAGE_SIZE}
+      />
     </MotionWrap>
   )
 }
-
-export default Home;

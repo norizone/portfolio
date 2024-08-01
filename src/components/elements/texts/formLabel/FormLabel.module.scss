@@ -1,0 +1,24 @@
+@use '_functions.scss' as f;
+.field {
+  padding-bottom: f.vw(375, 36);
+  @include f.media('s') {
+    padding-bottom: f.rem(36);
+  }
+  @include f.media('xl') {
+    width: 100%;
+    max-width: 768px;
+    display: grid;
+    grid-template-columns: 1fr f.p(768, 600);
+    column-gap: f.p(768, 20);
+    padding-bottom: f.rem(40);
+  }
+
+  &__box-wrap {
+    position: relative;
+    width: auto;
+    margin-top: f.rem(7);
+    @include f.media('xl') {
+      margin-top: 0;
+    }
+  }
+}

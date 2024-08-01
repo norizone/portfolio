@@ -1,0 +1,28 @@
+@use '_functions.scss' as f;
+
+.btn {
+  font-size: f.vw(375, 28);
+  font-family: var(--font-en);
+  letter-spacing: f.ls(20);
+  font-weight: var(--font-bold);
+  margin-top: f.vw(375, 20);
+  display: flex;
+  flex-flow: row nowrap;
+  align-items: center;
+  width: max-content;
+  margin-left: auto;
+  margin-right: auto;
+
+  @include f.media('s') {
+    margin-top: 20px;
+    font-size: f.rem(28);
+  }
+  @include f.media('lg') {
+    font-size: f.vw(1366, 40);
+    margin-top: f.vw(1366, 20);
+  }
+  @include f.media('xl') {
+    font-size: f.rem(40);
+    margin-top: f.rem(20);
+  }
+}

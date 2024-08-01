@@ -44,10 +44,10 @@
     bottom: 48px;
     right: 0;
     pointer-events: none;
-    @include f.media("s") {
+    @include f.media('s') {
       width: f.p(824, 446);
     }
-    @include f.media("lg") {
+    @include f.media('lg') {
       bottom: -10px;
     }
   }
@@ -67,14 +67,14 @@
     margin-top: 80px;
     width: max-content;
     min-width: 5em;
-    @include f.media("s") {
+    @include f.media('s') {
       padding-bottom: 30px;
       font-size: f.vw(1366, 100);
     }
-    @include f.media("lg") {
+    @include f.media('lg') {
       padding-bottom: f.vw(1366, 46);
     }
-    @include f.media("xl") {
+    @include f.media('xl') {
       padding-bottom: 46px;
       font-size: f.rem(100);
     }
@@ -83,14 +83,14 @@
       width: f.p(310, 140);
       transform: scale(0);
       transform-origin: left top;
-      content: "";
+      content: '';
       position: absolute;
       bottom: 0;
       left: 0;
       background: var(--color-white);
       transform-origin: left;
       transition: transform 0.3s linear;
-      @include f.media("lg") {
+      @include f.media('lg') {
         width: f.p(824, 140);
         left: f.p(824, 4);
       }
@@ -105,15 +105,15 @@
     clip-path: inset(0 100% 0 0);
     font-size: 0;
     transition: clip-path 0.3s linear;
-    @include f.media("s") {
+    @include f.media('s') {
       margin-top: f.rem(30);
       width: 80%;
     }
-    @include f.media("md") {
+    @include f.media('md') {
       margin-top: f.vw(1366, 46);
       width: f.p(824, 600);
     }
-    @include f.media("xl") {
+    @include f.media('xl') {
       margin-top: 46px;
     }
   }

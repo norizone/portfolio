@@ -1,47 +1,72 @@
-"use client";
-import {type FC, useEffect ,useRef } from "react";
-import { useRecoilState, useRecoilValue } from "recoil";
-
-import { MainContents } from "@/features/index/components/mainContents/MainContents";
-import { ViewMore } from "../viewMore/ViewMore";
-import { Indicators } from "../indicators/Indicators";
-import styles from "./IndexPage.module.scss";
-import type { ListWorksContents } from "@/types/works";
-import { activeWorkState, composeWorksList  } from "@/stores/worksStates";
+'use client'
+import { useEffect, useLayoutEffect, useMemo, useRef } from 'react'
+import { MainContents } from '@/features/index/components/mainContents/MainContents'
+import { ViewMore } from '../viewMore/ViewMore'
+import { Indicators } from '../indicators/Indicators'
+import styles from './IndexPage.module.scss'
+import { activeWorkState, composeWorksList, loadedPage } from '@/stores/worksStates'
+import { WorkListRes } from '@/types/api/front'
+import { useIntersectionObserver } from '../../hooks/useIntersectionObserver'
+import { useAtom, useAtomValue } from 'jotai'
+import { useChangePage } from '../../hooks/useChangePage'
 
 type Props = {
-  contents: Array<ListWorksContents>;
-  totalCount: number
-};
+  SSRData: WorkListRes
+  pageSize: number
+}
 
-export const IndexPage: FC<Props> = (props) => {
-  const { contents ,totalCount} = props;
-  const [works, setWorks] = useRecoilState(composeWorksList);
-  const activeIndex = useRecoilValue(activeWorkState);
+export const IndexPage = (props: Props) => {
+  const { SSRData, pageSize } = props
+  const { totalPages, items } = SSRData
+  const viewMoreRef = useRef<HTMLButtonElement | null>(null)
+  const [works, setWorks] = useAtom(composeWorksList)
+  const activeIndex = useAtomValue(activeWorkState)
+  const currentPage = useAtomValue(loadedPage)
   const activeWork = useRef<number>(activeIndex)
 
-  useEffect(()=>{
-    if(contents <= works) return;
-    setWorks([...works,...contents]);
-  },[])
+  useEffect(() => {
+    if (works.length > 1) return
+    setWorks([...works, ...items])
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [items])
+
+  const { onChangePage, isLoadingWorkList } = useChangePage({
+    pageSize,
+    totalPages,
+  })
+
+  const { handleObserve } = useIntersectionObserver({
+    totalPages,
+    onChangePage,
+    isLoading: isLoadingWorkList,
+  })
+
+  useLayoutEffect(() => {
+    if (!viewMoreRef || !viewMoreRef.current) return
+    handleObserve(viewMoreRef)
+  }, [handleObserve, viewMoreRef]);
 
   return (
-    <div>
+    <>
       <div className={styles.index_contents__wrap} id="js-canvasTargetWrap">
         {works.map((el, index) => (
-          <MainContents 
-          contents={el} key={index}
-          contentsIndex={index}
-          isScrollTarget={ activeWork.current===index ? true : false }
+          <MainContents
+            contents={el}
+            key={index}
+            contentsIndex={index}
+            isScrollTarget={activeWork.current === index ? true : false}
           />
         ))}
-        {works.length >1 && 
-        <ViewMore totalCount={totalCount}/>
-        }
+        {works.length > 1 && (
+          <ViewMore
+            isLoading={isLoadingWorkList}
+            onChangePage={onChangePage}
+            ref={viewMoreRef}
+            btnHidden={currentPage >= totalPages}
+          />
+        )}
       </div>
-      {works.length >1 && 
-      <Indicators works={works} />
-      }
-    </div>
-  );
-};
+      {works.length > 1 && <Indicators works={works} />}
+    </>
+  )
+}

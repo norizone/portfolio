@@ -1,0 +1,12 @@
+@use '_functions.scss' as f;
+
+.headline {
+  font-size: f.rem(14);
+  font-family: var(--font-en);
+  letter-spacing: f.ls(40);
+  font-weight: var(--font-regular);
+  text-transform: uppercase;
+  @include f.media('lg') {
+    font-size: f.rem(16);
+  }
+}
