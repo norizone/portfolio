@@ -3,14 +3,13 @@ import { FC } from 'react'
 import styles from './PrimaryLink.module.scss'
 
 type Props = {
-  tag: 'a' | 'Link'
   text?: React.ReactNode | undefined
   hrefLink: string
   targetBlank?: boolean
 }
 
 export const PrimaryLink: FC<Props> = (props) => {
-  const { tag, text = 'visit website', hrefLink, targetBlank = false } = props
+  const { text = 'visit website', hrefLink, targetBlank = false } = props
   const icon = () => {
     return (
       <svg
@@ -41,23 +40,10 @@ export const PrimaryLink: FC<Props> = (props) => {
     )
   }
   return (
-    <>
-      {tag === 'a' && (
-        <a
-          className={styles.link}
-          href={hrefLink}
-          target={targetBlank ? '_blank' : '_self'}
-          rel={targetBlank ? 'noreferrer noopener' : ''}
-        >
-          <span>{text}</span>
-          {targetBlank && icon()}
-        </a>
-      )}
-      {tag === 'Link' && (
-        <Link className={styles.link} href={hrefLink}>
-          {text}
-        </Link>
-      )}
-    </>
+    <Link className={styles.link} href={hrefLink} target={targetBlank ? '_blank' : '_self'}
+      rel={targetBlank ? 'noreferrer noopener' : ''}>
+      <span>{text}</span>
+      {targetBlank && icon()}
+    </Link>
   )
 }

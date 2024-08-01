@@ -7,7 +7,7 @@ export default function NotFound() {
       <PrimaryHeadline tag={'p'} text={'404'} />
       <p className="error__text">ページが見つかりませんでした。</p>
       <div className="error-page__link">
-        <PrimaryLink tag={'Link'} hrefLink={'/'} text="Return to home" />
+        <PrimaryLink hrefLink={'/'} text="Return to home" />
       </div>
     </div>
   )
