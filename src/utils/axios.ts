@@ -24,7 +24,6 @@ axiosClient.interceptors.response.use(
     switch (error?.response?.status) {
       case 401:
         message = '認証エラー'
-        // window.location.href = '/login'
         break
       case 403:
         message = error.response?.data?.message ?? 'アクセスが拒否されました'
