@@ -12,7 +12,7 @@ export const AuthGuard = (props: { children: React.ReactNode }) => {
   const pathname = usePathname()
   const [id, setId] = useAtom(userId)
   const { data, isLoading, isError } = useGetAuth(
-    pathname !== routers.LOGIN,
+    (pathname !== routers.LOGIN || id !== 0),
     true,
   )
   const { onLogout, closeModal, isOpenLogoutModal } = useLogout()
