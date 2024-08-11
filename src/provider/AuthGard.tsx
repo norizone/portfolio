@@ -11,20 +11,20 @@ import { useEffect } from 'react'
 export const AuthGuard = (props: { children: React.ReactNode }) => {
   const pathname = usePathname()
   const [id, setId] = useAtom(userId)
-  const { data, isLoading } = useGetAuth(
+  const { data, isLoading, isError } = useGetAuth(
     pathname !== routers.LOGIN,
     true,
   )
   const { onLogout, closeModal, isOpenLogoutModal } = useLogout()
 
   useEffect(() => {
-    if (!data) return
+    if (!data || isError) return
     if (data.userId !== id) {
       setId(data.userId)
       if (id === null || id === 0) return;
       data.userId === 0 && onLogout();
     }
-  }, [data])
+  }, [data, isError])
 
   return (
     <>{props.children}
