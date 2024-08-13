@@ -32,16 +32,16 @@ export const ArticleContent = (props: Props) => {
         </div>
 
         <p className={styles['article__link']}>
-          {item.url && item.isLinkToUrl && (
+          {(item.url && Number(item.isLinkToUrl) === 1) &&
             <PrimaryLink hrefLink={item.url} targetBlank={true} />
-          )}
-          {item.gitUrl && (
+          }
+          {item.gitUrl &&
             <PrimaryLink
               hrefLink={item.gitUrl}
               targetBlank={true}
               text={'git hub'}
             />
-          )}
+          }
         </p>
 
         <dl className={styles['article__data']}>
@@ -59,7 +59,7 @@ export const ArticleContent = (props: Props) => {
               </span>
             ))}
           </dd>
-          {item.url && !item.isLinkToUrl && (
+          {item.url && Number(item.isLinkToUrl) === 0 && (
             <>
               <dt className={styles['upper']}>URL</dt>
               <dd>{item.url}</dd>
