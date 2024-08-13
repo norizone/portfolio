@@ -51,7 +51,7 @@ export const MainContents: FC<Props> = (props) => {
   const scrollCallback = (entries: IntersectionObserverEntry[]) => {
     entries.forEach((el) => {
       if (el.isIntersecting) {
-        setActiveWork(contentsIndex)
+        targetRef.current && setActiveWork(contentsIndex)
         if (contents.id === 'dummy') return
         setTimeout(() => {
           setLoadedImage()
@@ -99,7 +99,6 @@ export const MainContents: FC<Props> = (props) => {
               loading="eager"
               alt=""
               ref={imageRef}
-              onLoad={setLoadedImage}
             />
           </Link>
         </div>
