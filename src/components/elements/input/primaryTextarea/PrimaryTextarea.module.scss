@@ -1,0 +1,26 @@
+@use '_functions.scss' as f;
+.field {
+  &__box {
+    background: rgba($color: #fff, $alpha: 0.5);
+    transition: border;
+    color: var(--color-black);
+    font-size: f.rem(16);
+    position: relative;
+    width: 100%;
+    transition: border 0.2s linear, background 0.2s linear;
+    min-height: 224px;
+    padding: 14px 14px;
+    @include f.media('lg') {
+      min-height: 200px;
+    }
+    &:focus,
+    &:focus-visible {
+      outline: none;
+      background: rgba($color: #fff, $alpha: 1);
+    }
+    &.error {
+      border: 1px solid var(--color-gray);
+      background: rgba($color: #fff, $alpha: 1);
+    }
+  }
+}

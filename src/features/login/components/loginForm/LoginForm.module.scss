@@ -1,0 +1,9 @@
+@use '_functions.scss' as f;
+.submitWrap {
+  position: relative;
+}
+.submitError {
+  position: absolute;
+  top: -2em;
+  width: 100%;
+}

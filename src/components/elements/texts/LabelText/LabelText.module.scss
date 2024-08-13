@@ -1,0 +1,35 @@
+@use '_functions.scss' as f;
+.field {
+  &__label {
+    font-size: f.rem(14);
+    letter-spacing: f.ls(40);
+    font-family: var(--font-en);
+    font-weight: var(--font-regular);
+    @include f.media('lg') {
+      font-size: f.rem(16);
+    }
+  }
+
+  &__labels {
+    display: flex;
+    flex-flow: row nowrap;
+    align-items: center;
+    @include f.media('xl') {
+      align-items: flex-start;
+      flex-flow: column nowrap;
+      align-items: flex-start;
+    }
+  }
+
+  &__require {
+    font-size: f.rem(14);
+    color: var(--color-error);
+    letter-spacing: f.ls(40);
+    font-family: var(--font-en);
+    font-weight: var(--font-regular);
+    margin-left: 1em;
+    @include f.media('xl') {
+      margin-left: 0;
+    }
+  }
+}

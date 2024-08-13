@@ -1,4 +1,4 @@
-@use "sass:math";
+@use 'sass:math';
 
 // functionを定義するscssファイル
 // remの値を出す 16で割って px指定と同じサイズにする
@@ -45,13 +45,13 @@ $z-map: (pulldown, pagetop, nav, header);
   position: relative;
 
   &::before {
-    content: "";
+    content: '';
     float: left;
     padding-top: math.div($height, $width) * 100%;
   }
 
   &::after {
-    content: "";
+    content: '';
     display: table;
     clear: both;
   }
@@ -68,12 +68,12 @@ $z-map: (pulldown, pagetop, nav, header);
 // @include media('sm'){} 呼び出し方
 
 $breakpoints: (
-  s: "only screen and (min-width:480px)",
-  sm: "only screen and (min-width:576px)",
-  md: "only screen and (min-width:768px)",
-  lg: "only screen and (min-width:992px)",
-  xl: "only screen and (min-width:1200px)",
-  xxl: "only screen and (min-width:1400px)",
+  s: 'only screen and (min-width:480px)',
+  sm: 'only screen and (min-width:576px)',
+  md: 'only screen and (min-width:768px)',
+  lg: 'only screen and (min-width:992px)',
+  xl: 'only screen and (min-width:1200px)',
+  xxl: 'only screen and (min-width:1400px)',
 );
 
 @mixin media($breakpoint) {

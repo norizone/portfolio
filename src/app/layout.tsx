@@ -1,19 +1,20 @@
-import type { Metadata } from "next";
-import { Montserrat } from "next/font/google";
+import type { Metadata } from 'next'
+import { Montserrat } from 'next/font/google'
 
 import '@/styles/global.scss'
-import { PrimaryHeader } from "@/components/layouts/header/PrimaryHeader";
-import { ScrollDown } from "@/components/layouts/decoration/ScrollDown";
-import { ArtWork } from "@/artWork/ArtWork";
-import { SideLinks } from "@/components/layouts/sideLinks/SideLinks";
-import AppProvider from "@/provider/RecoilProvider"
+import { PrimaryHeader } from '@/components/layouts/header/PrimaryHeader'
+import { ScrollDown } from '@/components/layouts/decoration/ScrollDown'
+import { ArtWork } from '@/artWork/ArtWork'
+import { SideLinks } from '@/components/layouts/sideLinks/SideLinks'
+import { Providers } from '@/provider/Providers'
+import { ReactQueryDevtools } from '@tanstack/react-query-devtools'
 
-const montserrat = Montserrat({ 
-  weight:['300', '500', '700'] , 
-  subsets: ["latin"],
-  variable: "--font-montserrat",
-  display: "swap",
-});
+const montserrat = Montserrat({
+  weight: ['300', '500', '700'],
+  subsets: ['latin'],
+  variable: '--font-montserrat',
+  display: 'swap',
+})
 
 export const metadata: Metadata = {
   title: {
@@ -21,32 +22,28 @@ export const metadata: Metadata = {
     template: '%s | minami takanori portfolio',
   },
   description: 'minami takanori portfolio',
-  viewport: {
-    width: 'device-width',
-    initialScale: 1,
-  },
   icons: {
     icon: '/ico.png',
   },
-
-};
+}
 
 export default function RootLayout({
-  children
+  children,
 }: {
-  children: React.ReactNode;
+  children: React.ReactNode
 }) {
   return (
     <html lang="ja" className={montserrat.variable}>
       <body>
-        <PrimaryHeader/>
-        <ScrollDown/>
-        <AppProvider>
-          <ArtWork/>
+        <Providers>
+          <PrimaryHeader />
+          <ScrollDown />
+          <ArtWork />
           {children}
-          </AppProvider>
-        <SideLinks/>
-        </body>
+          <ReactQueryDevtools />
+          <SideLinks />
+        </Providers>
+      </body>
     </html>
-  );
+  )
 }

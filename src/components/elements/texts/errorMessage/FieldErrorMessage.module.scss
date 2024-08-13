@@ -1,0 +1,12 @@
+@use '_functions.scss' as f;
+.field {
+  &__error {
+    color: var(--color-error);
+    position: absolute;
+    font-size: f.rem(13);
+    bottom: -1.4em;
+    @include f.media('lg') {
+      font-size: f.rem(15);
+    }
+  }
+}

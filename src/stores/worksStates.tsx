@@ -1,29 +1,15 @@
-import { atom } from "recoil";
+import { atom } from 'jotai'
+import { WorkItemRes } from '@/types/api/front'
+import { DEFAULT_PAGE, DEFAULT_WORK } from '@/utils/const'
 
-import type { ListWorksContents } from "@/types/works";
+export const activeWorkState = atom<number>(0)
 
-export const activeWorkState = atom<number>({
-  key: "activeWorkState",
-  default: 0,
-});
+export const composeWorksList = atom<WorkItemRes[]>(DEFAULT_WORK)
 
-export const composeWorksList = atom<Array<ListWorksContents>>({
-  key:"composeWorksList",
-  default:[
-    {
-      id:'dummy',
-      title_en:'',
-      archive_img:{
-      url: '',
-      height: 0,
-      width: 0,
-      },
-      use_tools:['']
-    }
-  ]
-})
+export const loadedPage = atom<number>(DEFAULT_PAGE)
 
-export const loadedImagesState = atom<Array<number>>({
-  key:'loadedImagesState',
-  default:[],
-})
+export const loadedImagesState = atom<Array<number>>([])
+
+export const userId = atom<number | null>(null)
+
+export const worksTotalCount = atom<number>(0)

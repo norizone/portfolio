@@ -1,0 +1,52 @@
+@use '_functions.scss' as f;
+
+.login {
+  display: flex;
+  flex-flow: column;
+  justify-items: center;
+  width: inherit;
+  margin-top: calc((70 / 375) * 100svh);
+  @include f.media('s') {
+    margin-top: 70px;
+  }
+  @include f.media('lg') {
+    margin-top: f.vw(1280, 130);
+  }
+  @include f.media('xl') {
+    margin-top: 130px;
+  }
+  &__form {
+    width: 100%;
+    margin-top: f.vw(375, 30);
+    @include f.media('s') {
+      margin-top: 30px;
+    }
+    @include f.media('lg') {
+      margin-top: f.vw(1366, 76);
+    }
+    @include f.media('xl') {
+      margin-top: 76px;
+    }
+  }
+  &__headline {
+    font-size: f.vw(375, 31);
+    // margin-top: f.vw(375, 24);
+    font-family: var(--font-en);
+    font-weight: var(--font-regular);
+    line-height: f.lh(32, 46);
+    letter-spacing: 0;
+    @include f.media('s') {
+      font-size: f.rem(31);
+      // margin-top: 24px;
+    }
+    @include f.media('lg') {
+      font-size: f.vw(1366, 60);
+      // margin-top: 26px;
+      line-height: f.lh(60, 77);
+      white-space: nowrap;
+    }
+    @include f.media('xl') {
+      font-size: f.rem(60);
+    }
+  }
+}

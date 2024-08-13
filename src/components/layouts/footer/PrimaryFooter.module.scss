@@ -2,15 +2,13 @@
 
 .footer {
   height: f.vw(375, 136);
-  @include f.media("s") {
+  @include f.media('s') {
     height: 136px;
   }
-  @include f.media("lg") {
+  @include f.media('lg') {
     height: vw(1366, 280);
   }
-  @include f.media("xl") {
+  @include f.media('xl') {
     height: 280px;
   }
 }
-
-
