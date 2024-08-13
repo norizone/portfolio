@@ -5,7 +5,7 @@ import { RefObject, useCallback, useEffect, useRef } from 'react'
 const observerOptions = {
   root: null,
   rootMargin: '50% 0px',
-  threshold: 1.0,
+  threshold: 0,
 }
 
 export const useIntersectionObserver = ({
@@ -32,7 +32,7 @@ export const useIntersectionObserver = ({
           timeoutRef.current = setTimeout(() => {
             observer.unobserve(entry.target)
             onChangePage()
-          }, 1000)
+          }, 500)
         } else {
           if (timeoutRef.current) {
             clearTimeout(timeoutRef.current)
