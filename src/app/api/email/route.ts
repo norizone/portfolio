@@ -33,9 +33,12 @@ export async function POST(request: NextRequest) {
     await transport.sendMail(mailOptionsToAdmin)
     await transport.sendMail(autoReplyMailOptions)
 
-    return NextResponse.json({ message: 'Success!', status: 200 })
+    return NextResponse.json({ message: 'Success!' }, { status: 200 })
   } catch (err) {
     console.error('Failed to send email:', err)
-    return NextResponse.json({ message: 'Failed!', status: 500 })
+    return NextResponse.json(
+      { message: 'Failed to send email' },
+      { status: 500 }
+    )
   }
 }
