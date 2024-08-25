@@ -14,8 +14,9 @@ import {
   ContactBody,
   LoginBody,
 } from '@/types/api/front'
-import { contactApiUrl, workApiUrl } from '@/utils/apiUrl'
+import { workApiUrl } from '@/utils/apiUrl'
 import { getAuth } from './auth'
+import axios from 'axios'
 
 /*
   auth
@@ -99,7 +100,7 @@ export const useGetWork = (id: number, SSRData?: Work) => {
 export const useMutateContact = () => {
   return useMutation({
     mutationFn: async (sendData: ContactBody) => {
-      const res = await axiosClient.post(contactApiUrl.default, sendData)
+      const res = await axios.post('/api/email', sendData)
       return res.data
     },
   })
