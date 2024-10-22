@@ -7,20 +7,7 @@ import { baseURL, workApiUrl } from '@/utils/apiUrl'
 import { WorkListRes } from '@/types/api/front'
 import { DEFAULT_PAGE, PAGE_SIZE } from '@/utils/const'
 
-export const metadata: Metadata = {
-  robots: {
-    index: false,
-    follow: true,
-    googleBot: {
-      index: true,
-      follow: false,
-      noimageindex: true,
-      'max-video-preview': -1,
-      'max-image-preview': 'large',
-      'max-snippet': -1,
-    },
-  },
-}
+export const metadata: Metadata = {}
 
 const getWorkList = async (): Promise<WorkListRes> => {
   const cookie = cookies()
