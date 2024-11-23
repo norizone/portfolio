@@ -58,15 +58,11 @@ const WorksPage = async ({ params }: { params: { id: string } }) => {
   const data: DetailWorkRes = await getWork(Number(params.id))
   const { item, nextContents } = data
   return (
-    <MotionWrap>
+    <>
       <SetCurrent pageId={item.id} />
-      <div className={clsx('l-wrap', '-primary')}>
-        <BackToTop />
-        {item && <ArticleContent item={item} />}
-        {nextContents && <NextContents contents={nextContents} />}
-        <PrimaryFooter />
-      </div>
-    </MotionWrap>
+      {item && <ArticleContent item={item} />}
+      {nextContents && <NextContents contents={nextContents} />}
+    </>
   )
 }
 
